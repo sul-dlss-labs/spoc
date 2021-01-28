@@ -1,10 +1,10 @@
 <script src="https://use.fontawesome.com/a791edbd74.js"></script>
 <button>
   {% if state == 'select' %}
-  <i class="fas fa-check-circle"></i>
-  {% elsif state == 'dismiss' %}
-  <i class="fas fa-minus-circle"></i>
+  <i class="fas fa-check-circle" style="color: Green"></i>
+  {% elsif state == 'reject' %}
+  <i class="fas fa-minus-circle" style="color: Red"></i>
   {% else %}
-  <i class="far fa-question-circle"></i>
+  <i class="far fa-question-circle" style="color: grey"></i>
   {% endif %}
 </button>
