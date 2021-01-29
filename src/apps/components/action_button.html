@@ -1,0 +1,22 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+<script>
+ const handleClick = (event) => {
+   console.log(`in handleClick`, event)
+   if (event.target.dataset.status === 'select') {
+     event.target.classList = 'bi bi-check-circle-fill text-success'
+     event.target.dataset.status = 'reject'
+   } else if (event.target.dataset.status === 'reject') {
+     event.target.classList = 'bi bi-dash-circle-fill text-danger'
+     event.target.dataset.status = 'nan'
+   } else {
+     event.target.classList = 'bi bi-question-circle-fill'
+     event.target.dataset.status = 'select'
+   }
+   event.preventDefault()
+ }
+</script>
+<button class="btn btn-default" onClick="handleClick(event)">
+  <i class="bi bi-question-circle-fill" style="font-size: 3em;" data-status="{{status}}"></i>
+</button>
