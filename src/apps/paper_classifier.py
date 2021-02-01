@@ -5,12 +5,15 @@ import streamlit as st
 import streamlit.components.v1 as components
 from jinja2 import Template
 
+st.set_page_config(page_title="Paper Classifier")
+
 with open('src/apps/components/action_button.html') as fo:
     action_template = Template(fo.read())
 
 papers = pd.read_json("data/papers.json")
 full_text = pathlib.Path("data/full_text")
 paper = papers.sample()
+
 
 main_col, action_col = st.beta_columns([2,.5])
 

@@ -7,6 +7,8 @@ from jinja2 import Template
 with open('src/apps/components/action_button.html') as fo:
     action_template = Template(fo.read())
 
+st.set_page_config(page_title="Abstract Generator")
+
 rejected, skipped, verified = 0,0,0
 
 
