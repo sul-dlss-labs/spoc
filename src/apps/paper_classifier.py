@@ -21,9 +21,9 @@ with main_col:
     f'''
     # Paper Classifier - Observation or not?
 
-    ### { paper['title'].iloc[0] }
-    ### { paper['date'].iloc[0] }
-    ### { paper['institution'].iloc[0] }
+    ### { paper['Title'].iloc[0] }
+    ### { paper['Year'].iloc[0] }
+    ### { paper['Institution'].iloc[0] }
 
     ## Paper Abstract
 
