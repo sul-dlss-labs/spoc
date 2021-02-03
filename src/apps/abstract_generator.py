@@ -25,16 +25,18 @@ with main_col:
     # Abstract Generator
     ## You have verified { verified } rejected { rejected } skipped { skipped }
 
-    ### { paper['title'].iloc[0] }
-    ### { paper['date'].iloc[0] }
-    ### { paper['institution'].iloc[0] }
+    ### { paper['Title'].iloc[0] }
+    by { paper['Author'].iloc[0] }
+    ### { paper['Year'].iloc[0] }
+    ### { paper['Institution'].iloc[0] }
 
     ### Generated Abstract
 
     '''
     if st.button('Open pdf'):
-        paper_text = full_text/paper['filename'].iloc[0]
-        st.text(paper_text.read_text())
+        st.stop()
+#         paper_text = full_text/paper['filename'].iloc[0]
+#         st.text(paper_text.read_text())
 
 with action_col:
     st.button("Next >")
