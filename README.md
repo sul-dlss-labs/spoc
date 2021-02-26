@@ -1,5 +1,9 @@
 # Stanford Species Occurrences
+This project provides a Streamlit application that provides record-level verification of individual
+student reports for training and validation purposes as well publishing the records for inclusion
+in [Global Biodiversity Information Facility][GBIF].
 
+## Streamlit SPOC Verifier Application
 
 ## Development
 We recommend using a Python virtual environment to install SPOC's package dependencies. SPOC is 
@@ -21,10 +25,10 @@ with `python setup.py test` in the root directory.
 ## Deployment and CI/CD
 The publicly available [Streamlit][STRMLIT] application is hosted on AWS. 
 
-## Streamlit SPOC Verifier Application
 
 [BLK]: https://black.readthedocs.io/en/stable/
 [CYPRESS]: https://www.cypress.io/
 [FLK8]: https://flake8.pycqa.org/en/latest/
+[GBIF]: https://www.gbif.org/
 [MYPY]: https://mypy.readthedocs.io/en/stable/
 [STRMLIT]: https://www.streamlit.io/
