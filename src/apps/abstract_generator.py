@@ -4,13 +4,12 @@ import streamlit as st
 import streamlit.components.v1 as components
 from jinja2 import Template
 
-with open('src/apps/components/action_button.html') as fo:
+with open("src/apps/components/action_button.html") as fo:
     action_template = Template(fo.read())
 
 st.set_page_config(page_title="Abstract Generator")
 
-rejected, skipped, verified = 0,0,0
-
+rejected, skipped, verified = 0, 0, 0
 
 
 papers = pd.read_json("data/papers.json")
@@ -18,10 +17,10 @@ full_text = pathlib.Path("data/full_text")
 paper = papers.sample()
 
 
-main_col, action_col = st.beta_columns([2,.5])
+main_col, action_col = st.beta_columns([2, 0.5])
 
 with main_col:
-    f'''
+    f"""
     # Abstract Generator
     ## You have verified { verified } rejected { rejected } skipped { skipped }
 
@@ -41,6 +40,5 @@ with main_col:
 with action_col:
     st.button("Next >")
     components.html(
-        action_template.render(status=paper['status'].iloc[0]),
-        height=75, width=65
+        action_template.render(status=paper["status"].iloc[0]), height=75, width=65
     )
