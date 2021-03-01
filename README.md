@@ -6,24 +6,24 @@ in [Global Biodiversity Information Facility][GBIF].
 ## Streamlit SPOC Verifier Application
 
 ## Development
-We recommend using a Python virtual environment to install SPOC's package dependencies. SPOC is 
-currently developed with [Python 3.9](https://www.python.org/downloads/) and above. 
+We recommend using a Python virtual environment to install SPOC's package dependencies. SPOC is
+currently developed with [Python 3.9](https://www.python.org/downloads/) and above.
 
 ### Setup
-1. Create a new virtual environment `python -m venv spoc-env`
+1. Create a new virtual environment `python3 -m venv spoc-env`
 1. Activate (on POSIX systems) `source spoc-env/bin/activate`
 1. Clone the current SPOC Git repository `git clone https://github.com/sul-dlss-labs/spoc.git`
 1. Enter directory and install dependencies, `cd spoc && pip install -r requirements.txt`  
 
 ### Testing
 The SPOC project uses Python types with [mypy][MYPY], linting with [Flake8][FLK8], and [Black][BLK]
-for Python code formatting. Unit tests use the standard Python `unittest` and can be run 
-with `python setup.py test` in the root directory. 
+for Python code formatting. Unit tests use the standard Python `unittest` and can be run
+with `python3 setup.py test` in the root directory. 
 
 [Cypress][CYPRESS] is used for end-to-end integration testing.
 
 ## Deployment and CI/CD
-The publicly available [Streamlit][STRMLIT] application is hosted on AWS. 
+The publicly available [Streamlit][STRMLIT] application is hosted on AWS.
 
 
 [BLK]: https://black.readthedocs.io/en/stable/
