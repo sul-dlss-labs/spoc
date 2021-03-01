@@ -31,8 +31,8 @@ with main_col:
 
     ### Generated Abstract
 
-    '''
-    if st.button('Open pdf'):
+    """
+    if st.button("Open pdf"):
         st.stop()
 #         paper_text = full_text/paper['filename'].iloc[0]
 #         st.text(paper_text.read_text())
