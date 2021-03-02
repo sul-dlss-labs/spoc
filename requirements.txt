@@ -1,3 +1,6 @@
 streamlit
 jinja2
 black
+jupyter-book
+matplotlib
+numpy
