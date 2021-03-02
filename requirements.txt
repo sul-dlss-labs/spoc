@@ -4,3 +4,4 @@ black
 jupyter-book
 matplotlib
 numpy
+ghp-import
