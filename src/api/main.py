@@ -21,7 +21,8 @@ app = FastAPI()
 @app.get("/papers/{paper_id}")
 async def get_paper_records(paper_id: str):
     # Returns all of the records associated with a paper
-    records = all_records[all_records['Paper ID'].isin([paper_id,])]
+    paper_filename = f"{paper_id}.tei.xml"
+    records = all_records[all_records['Paper ID'].isin([paper_filename,])]
     if len(records) < 1:
         raise HTTPException(status_code=404, detail=f"{paper_id} not found")
     return { "id": paper_id, "records": records }
