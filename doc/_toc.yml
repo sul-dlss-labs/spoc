@@ -1,0 +1,19 @@
+# Table of content
+# Learn more at https://jupyterbook.org/customize/toc.html
+#
+- file: intro
+  numbered: true
+
+- part: Data and Model Prepreparation
+  chapters:
+  - file: data-prep
+  - file: grobid-pdf
+
+- part: Future
+  chapters:
+  - file: future
+  - file: abstract-generator
+
+- part: Help
+  chapters:
+  - file: markdown
