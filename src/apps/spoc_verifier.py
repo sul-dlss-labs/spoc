@@ -1,4 +1,3 @@
-import datetime
 import pandas as pd
 import streamlit as st
 
@@ -39,18 +38,19 @@ species = pd.DataFrame(
 )
 
 with main_col:
-    f"""
+    """
     # SPOC Verifier
     """
     st.dataframe(species)
 
 with geo_col:
-    f"""
+    """
     # A-A03
     [PLACE]
 
     """
 
 with action_col:
-
-    components.html(action_template.render(status="select"), height=75, width=65)
+    components.html(action_template.render(status="select"),
+                    height=75,
+                    width=65)
