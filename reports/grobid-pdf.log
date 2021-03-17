@@ -17,13 +17,143 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-client = grobid.grobid_client(config_path="./grobid_config.json")
+client = grobid.grobid_client(config_path="../config/grobid.json")
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
-[0;32m<ipython-input-4-ef3304f74194>[0m in [0;36m<module>[0;34m[0m
-[0;32m----> 1[0;31m [0mclient[0m [0;34m=[0m [0mgrobid[0m[0;34m.[0m[0mgrobid_client[0m[0;34m([0m[0mconfig_path[0m[0;34m=[0m[0;34m"./grobid_config.json"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;31mConnectionRefusedError[0m                    Traceback (most recent call last)
+[0;32m~/02021/sul-dlss/labs/ml-env/lib/python3.9/site-packages/urllib3/connection.py[0m in [0;36m_new_conn[0;34m(self)[0m
+[1;32m    168[0m         [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 169[0;31m             conn = connection.create_connection(
+[0m[1;32m    170[0m                 [0;34m([0m[0mself[0m[0;34m.[0m[0m_dns_host[0m[0;34m,[0m [0mself[0m[0;34m.[0m[0mport[0m[0;34m)[0m[0;34m,[0m [0mself[0m[0;34m.[0m[0mtimeout[0m[0;34m,[0m [0;34m**[0m[0mextra_kw[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/02021/sul-dlss/labs/ml-env/lib/python3.9/site-packages/urllib3/util/connection.py[0m in [0;36mcreate_connection[0;34m(address, timeout, source_address, socket_options)[0m
+[1;32m     95[0m     [0;32mif[0m [0merr[0m [0;32mis[0m [0;32mnot[0m [0;32mNone[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 96[0;31m         [0;32mraise[0m [0merr[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     97[0m [0;34m[0m[0m
+
+[0;32m~/02021/sul-dlss/labs/ml-env/lib/python3.9/site-packages/urllib3/util/connection.py[0m in [0;36mcreate_connection[0;34m(address, timeout, source_address, socket_options)[0m
+[1;32m     85[0m                 [0msock[0m[0;34m.[0m[0mbind[0m[0;34m([0m[0msource_address[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 86[0;31m             [0msock[0m[0;34m.[0m[0mconnect[0m[0;34m([0m[0msa[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     87[0m             [0;32mreturn[0m [0msock[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mConnectionRefusedError[0m: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+[0;31mNewConnectionError[0m                        Traceback (most recent call last)
+[0;32m~/02021/sul-dlss/labs/ml-env/lib/python3.9/site-packages/urllib3/connectionpool.py[0m in [0;36murlopen[0;34m(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)[0m
+[1;32m    698[0m             [0;31m# Make the request on the httplib connection object.[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 699[0;31m             httplib_response = self._make_request(
+[0m[1;32m    700[0m                 [0mconn[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/02021/sul-dlss/labs/ml-env/lib/python3.9/site-packages/urllib3/connectionpool.py[0m in [0;36m_make_request[0;34m(self, conn, method, url, timeout, chunked, **httplib_request_kw)[0m
+[1;32m    393[0m             [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 394[0;31m                 [0mconn[0m[0;34m.[0m[0mrequest[0m[0;34m([0m[0mmethod[0m[0;34m,[0m [0murl[0m[0;34m,[0m [0;34m**[0m[0mhttplib_request_kw[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    395[0m [0;34m[0m[0m
+
+[0;32m~/02021/sul-dlss/labs/ml-env/lib/python3.9/site-packages/urllib3/connection.py[0m in [0;36mrequest[0;34m(self, method, url, body, headers)[0m
+[1;32m    233[0m             [0mheaders[0m[0;34m[[0m[0;34m"User-Agent"[0m[0;34m][0m [0;34m=[0m [0m_get_default_user_agent[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 234[0;31m         [0msuper[0m[0;34m([0m[0mHTTPConnection[0m[0;34m,[0m [0mself[0m[0;34m)[0m[0;34m.[0m[0mrequest[0m[0;34m([0m[0mmethod[0m[0;34m,[0m [0murl[0m[0;34m,[0m [0mbody[0m[0;34m=[0m[0mbody[0m[0;34m,[0m [0mheaders[0m[0;34m=[0m[0mheaders[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    235[0m [0;34m[0m[0m
+
+[0;32m/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py[0m in [0;36mrequest[0;34m(self, method, url, body, headers, encode_chunked)[0m
+[1;32m   1254[0m         [0;34m"""Send a complete request to the server."""[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1255[0;31m         [0mself[0m[0;34m.[0m[0m_send_request[0m[0;34m([0m[0mmethod[0m[0;34m,[0m [0murl[0m[0;34m,[0m [0mbody[0m[0;34m,[0m [0mheaders[0m[0;34m,[0m [0mencode_chunked[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1256[0m [0;34m[0m[0m
+
+[0;32m/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py[0m in [0;36m_send_request[0;34m(self, method, url, body, headers, encode_chunked)[0m
+[1;32m   1300[0m             [0mbody[0m [0;34m=[0m [0m_encode[0m[0;34m([0m[0mbody[0m[0;34m,[0m [0;34m'body'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1301[0;31m         [0mself[0m[0;34m.[0m[0mendheaders[0m[0;34m([0m[0mbody[0m[0;34m,[0m [0mencode_chunked[0m[0;34m=[0m[0mencode_chunked[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1302[0m [0;34m[0m[0m
+
+[0;32m/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py[0m in [0;36mendheaders[0;34m(self, message_body, encode_chunked)[0m
+[1;32m   1249[0m             [0;32mraise[0m [0mCannotSendHeader[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1250[0;31m         [0mself[0m[0;34m.[0m[0m_send_output[0m[0;34m([0m[0mmessage_body[0m[0;34m,[0m [0mencode_chunked[0m[0;34m=[0m[0mencode_chunked[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1251[0m [0;34m[0m[0m
+
+[0;32m/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py[0m in [0;36m_send_output[0;34m(self, message_body, encode_chunked)[0m
+[1;32m   1009[0m         [0;32mdel[0m [0mself[0m[0;34m.[0m[0m_buffer[0m[0;34m[[0m[0;34m:[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+[0;32m-> 1010[0;31m         [0mself[0m[0;34m.[0m[0msend[0m[0;34m([0m[0mmsg[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m   1011[0m [0;34m[0m[0m
+
+[0;32m/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/http/client.py[0m in [0;36msend[0;34m(self, data)[0m
+[1;32m    949[0m             [0;32mif[0m [0mself[0m[0;34m.[0m[0mauto_open[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 950[0;31m                 [0mself[0m[0;34m.[0m[0mconnect[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    951[0m             [0;32melse[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/02021/sul-dlss/labs/ml-env/lib/python3.9/site-packages/urllib3/connection.py[0m in [0;36mconnect[0;34m(self)[0m
+[1;32m    199[0m     [0;32mdef[0m [0mconnect[0m[0;34m([0m[0mself[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 200[0;31m         [0mconn[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0m_new_conn[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    201[0m         [0mself[0m[0;34m.[0m[0m_prepare_conn[0m[0;34m([0m[0mconn[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/02021/sul-dlss/labs/ml-env/lib/python3.9/site-packages/urllib3/connection.py[0m in [0;36m_new_conn[0;34m(self)[0m
+[1;32m    180[0m         [0;32mexcept[0m [0mSocketError[0m [0;32mas[0m [0me[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 181[0;31m             raise NewConnectionError(
+[0m[1;32m    182[0m                 [0mself[0m[0;34m,[0m [0;34m"Failed to establish a new connection: %s"[0m [0;34m%[0m [0me[0m[0;34m[0m[0;34m[0m[0m
+
+[0;31mNewConnectionError[0m: <urllib3.connection.HTTPConnection object at 0x7f98d8215640>: Failed to establish a new connection: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+[0;31mMaxRetryError[0m                             Traceback (most recent call last)
+[0;32m~/02021/sul-dlss/labs/ml-env/lib/python3.9/site-packages/requests/adapters.py[0m in [0;36msend[0;34m(self, request, stream, timeout, verify, cert, proxies)[0m
+[1;32m    438[0m             [0;32mif[0m [0;32mnot[0m [0mchunked[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 439[0;31m                 resp = conn.urlopen(
+[0m[1;32m    440[0m                     [0mmethod[0m[0;34m=[0m[0mrequest[0m[0;34m.[0m[0mmethod[0m[0;34m,[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/02021/sul-dlss/labs/ml-env/lib/python3.9/site-packages/urllib3/connectionpool.py[0m in [0;36murlopen[0;34m(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)[0m
+[1;32m    754[0m [0;34m[0m[0m
+[0;32m--> 755[0;31m             retries = retries.increment(
+[0m[1;32m    756[0m                 [0mmethod[0m[0;34m,[0m [0murl[0m[0;34m,[0m [0merror[0m[0;34m=[0m[0me[0m[0;34m,[0m [0m_pool[0m[0;34m=[0m[0mself[0m[0;34m,[0m [0m_stacktrace[0m[0;34m=[0m[0msys[0m[0;34m.[0m[0mexc_info[0m[0;34m([0m[0;34m)[0m[0;34m[[0m[0;36m2[0m[0;34m][0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/02021/sul-dlss/labs/ml-env/lib/python3.9/site-packages/urllib3/util/retry.py[0m in [0;36mincrement[0;34m(self, method, url, response, error, _pool, _stacktrace)[0m
+[1;32m    572[0m         [0;32mif[0m [0mnew_retry[0m[0;34m.[0m[0mis_exhausted[0m[0;34m([0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 573[0;31m             [0;32mraise[0m [0mMaxRetryError[0m[0;34m([0m[0m_pool[0m[0;34m,[0m [0murl[0m[0;34m,[0m [0merror[0m [0;32mor[0m [0mResponseError[0m[0;34m([0m[0mcause[0m[0;34m)[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    574[0m [0;34m[0m[0m
+
+[0;31mMaxRetryError[0m: HTTPConnectionPool(host='localhost', port=8070): Max retries exceeded with url: /api/isalive (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f98d8215640>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+[0;31mConnectionError[0m                           Traceback (most recent call last)
+[0;32m~/02021/sul-dlss/labs/grobid_client_python/grobid_client.py[0m in [0;36m_load_config[0;34m(self, path)[0m
+[1;32m     39[0m         [0;32mtry[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 40[0;31m             [0mr[0m [0;34m=[0m [0mrequests[0m[0;34m.[0m[0mget[0m[0;34m([0m[0mthe_url[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     41[0m         [0;32mexcept[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+
+[0;32m~/02021/sul-dlss/labs/ml-env/lib/python3.9/site-packages/requests/api.py[0m in [0;36mget[0;34m(url, params, **kwargs)[0m
+[1;32m     75[0m     [0mkwargs[0m[0;34m.[0m[0msetdefault[0m[0;34m([0m[0;34m'allow_redirects'[0m[0;34m,[0m [0;32mTrue[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 76[0;31m     [0;32mreturn[0m [0mrequest[0m[0;34m([0m[0;34m'get'[0m[0;34m,[0m [0murl[0m[0;34m,[0m [0mparams[0m[0;34m=[0m[0mparams[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     77[0m [0;34m[0m[0m
+
+[0;32m~/02021/sul-dlss/labs/ml-env/lib/python3.9/site-packages/requests/api.py[0m in [0;36mrequest[0;34m(method, url, **kwargs)[0m
+[1;32m     60[0m     [0;32mwith[0m [0msessions[0m[0;34m.[0m[0mSession[0m[0;34m([0m[0;34m)[0m [0;32mas[0m [0msession[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 61[0;31m         [0;32mreturn[0m [0msession[0m[0;34m.[0m[0mrequest[0m[0;34m([0m[0mmethod[0m[0;34m=[0m[0mmethod[0m[0;34m,[0m [0murl[0m[0;34m=[0m[0murl[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     62[0m [0;34m[0m[0m
+
+[0;32m~/02021/sul-dlss/labs/ml-env/lib/python3.9/site-packages/requests/sessions.py[0m in [0;36mrequest[0;34m(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)[0m
+[1;32m    541[0m         [0msend_kwargs[0m[0;34m.[0m[0mupdate[0m[0;34m([0m[0msettings[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 542[0;31m         [0mresp[0m [0;34m=[0m [0mself[0m[0;34m.[0m[0msend[0m[0;34m([0m[0mprep[0m[0;34m,[0m [0;34m**[0m[0msend_kwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    543[0m [0;34m[0m[0m
+
+[0;32m~/02021/sul-dlss/labs/ml-env/lib/python3.9/site-packages/requests/sessions.py[0m in [0;36msend[0;34m(self, request, **kwargs)[0m
+[1;32m    654[0m         [0;31m# Send the request[0m[0;34m[0m[0;34m[0m[0;34m[0m[0m
+[0;32m--> 655[0;31m         [0mr[0m [0;34m=[0m [0madapter[0m[0;34m.[0m[0msend[0m[0;34m([0m[0mrequest[0m[0;34m,[0m [0;34m**[0m[0mkwargs[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    656[0m [0;34m[0m[0m
+
+[0;32m~/02021/sul-dlss/labs/ml-env/lib/python3.9/site-packages/requests/adapters.py[0m in [0;36msend[0;34m(self, request, stream, timeout, verify, cert, proxies)[0m
+[1;32m    515[0m [0;34m[0m[0m
+[0;32m--> 516[0;31m             [0;32mraise[0m [0mConnectionError[0m[0;34m([0m[0me[0m[0;34m,[0m [0mrequest[0m[0;34m=[0m[0mrequest[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m    517[0m [0;34m[0m[0m
+
+[0;31mConnectionError[0m: HTTPConnectionPool(host='localhost', port=8070): Max retries exceeded with url: /api/isalive (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7f98d8215640>: Failed to establish a new connection: [Errno 61] Connection refused'))
+
+During handling of the above exception, another exception occurred:
+
+[0;31mNameError[0m                                 Traceback (most recent call last)
+[0;32m<ipython-input-4-dee81bd3f911>[0m in [0;36m<module>[0;34m[0m
+[0;32m----> 1[0;31m [0mclient[0m [0;34m=[0m [0mgrobid[0m[0;34m.[0m[0mgrobid_client[0m[0;34m([0m[0mconfig_path[0m[0;34m=[0m[0;34m"../config/grobid.json"[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
 [0m
 [0;32m~/02021/sul-dlss/labs/grobid_client_python/grobid_client.py[0m in [0;36m__init__[0;34m(self, config_path)[0m
 [1;32m     23[0m     [0;32mdef[0m [0m__init__[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mconfig_path[0m[0;34m=[0m[0;34m'./config.json'[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
@@ -33,12 +163,12 @@ client = grobid.grobid_client(config_path="./grobid_config.json")
 [1;32m     27[0m     [0;32mdef[0m [0m_load_config[0m[0;34m([0m[0mself[0m[0;34m,[0m [0mpath[0m[0;34m=[0m[0;34m'./config.json'[0m[0;34m)[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
 
 [0;32m~/02021/sul-dlss/labs/grobid_client_python/grobid_client.py[0m in [0;36m_load_config[0;34m(self, path)[0m
-[1;32m     29[0m         [0mLoad[0m [0mthe[0m [0mjson[0m [0mconfiguration[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     30[0m         """
-[0;32m---> 31[0;31m         [0mconfig_json[0m [0;34m=[0m [0mopen[0m[0;34m([0m[0mpath[0m[0;34m)[0m[0;34m.[0m[0mread[0m[0;34m([0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[0m[1;32m     32[0m         [0mself[0m[0;34m.[0m[0mconfig[0m [0;34m=[0m [0mjson[0m[0;34m.[0m[0mloads[0m[0;34m([0m[0mconfig_json[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
-[1;32m     33[0m [0;34m[0m[0m
+[1;32m     41[0m         [0;32mexcept[0m[0;34m:[0m[0;34m[0m[0;34m[0m[0m
+[1;32m     42[0m             [0mprint[0m[0;34m([0m[0;34m'GROBID server does not appear up and running, the connection to the server failed'[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0;32m---> 43[0;31m             [0mexit[0m[0;34m([0m[0;36m1[0m[0;34m)[0m[0;34m[0m[0;34m[0m[0m
+[0m[1;32m     44[0m [0;34m[0m[0m
+[1;32m     45[0m         [0mstatus[0m [0;34m=[0m [0mr[0m[0;34m.[0m[0mstatus_code[0m[0;34m[0m[0;34m[0m[0m
 
-[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: './grobid_config.json'
-FileNotFoundError: [Errno 2] No such file or directory: './grobid_config.json'
+[0;31mNameError[0m: name 'exit' is not defined
+NameError: name 'exit' is not defined
 
