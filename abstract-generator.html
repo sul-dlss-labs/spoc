@@ -26,7 +26,7 @@
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.37f24b989f4638ff9c27c22dc7559d4f.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -252,45 +252,23 @@
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">b922f1da2134</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">pipeline</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">summarizer</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span><span class="s2">&quot;summarization&quot;</span><span class="p">)</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;transformers&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pathlib</span>
 <span class="n">hms_1964</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/full_text/hms_1964_GibsonDanielGIII.txt&quot;</span><span class="p">)</span>
 <span class="n">hms_1964_text</span> <span class="o">=</span> <span class="n">hms_1964</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">2</span><span class="o">-</span><span class="mi">29</span><span class="n">b1efa48179</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pathlib</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">hms_1964</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;data/full_text/hms_1964_GibsonDanielGIII.txt&quot;</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">hms_1964_text</span> <span class="o">=</span> <span class="n">hms_1964</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span>
-
-<span class="nn">/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/pathlib.py</span> in <span class="ni">read_text</span><span class="nt">(self, encoding, errors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1253</span>         <span class="n">Open</span> <span class="n">the</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">text</span> <span class="n">mode</span><span class="p">,</span> <span class="n">read</span> <span class="n">it</span><span class="p">,</span> <span class="ow">and</span> <span class="n">close</span> <span class="n">the</span> <span class="n">file</span><span class="o">.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1254</span>         <span class="sd">&quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1255</span><span class="sd">         with self.open(mode=&#39;r&#39;, encoding=encoding, errors=errors) as f:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1256</span><span class="sd">             return f.read()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1257</span><span class="sd"> </span>
-
-<span class="nn">/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/pathlib.py</span> in <span class="ni">open</span><span class="nt">(self, mode, buffering, encoding, errors, newline)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1239</span><span class="sd">         the built-in open() function does.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1240</span><span class="sd">         &quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1241</span>         <span class="k">return</span> <span class="n">io</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">buffering</span><span class="p">,</span> <span class="n">encoding</span><span class="p">,</span> <span class="n">errors</span><span class="p">,</span> <span class="n">newline</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1242</span>                        <span class="n">opener</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_opener</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1243</span> 
-
-<span class="nn">/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/pathlib.py</span> in <span class="ni">_opener</span><span class="nt">(self, name, flags, mode)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1107</span>     <span class="k">def</span> <span class="nf">_opener</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mo">0o666</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1108</span>         <span class="c1"># A stub for the opener argument to built-in open()</span>
-<span class="ne">-&gt; </span><span class="mi">1109</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_accessor</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1110</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1111</span>     <span class="k">def</span> <span class="nf">_raw_open</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">flags</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="mo">0o777</span><span class="p">):</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/full_text/hms_1964_GibsonDanielGIII.txt&#39;
 </pre></div>
 </div>
 </div>
