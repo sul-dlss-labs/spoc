@@ -8,6 +8,10 @@
   chapters:
   - file: data-prep
   - file: grobid-pdf
+  
+- part: Data and Model Documentation
+  chapters:
+  - file: model-documentation
 
 - part: Future
   chapters:
