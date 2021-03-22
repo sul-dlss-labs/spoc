@@ -33,5 +33,5 @@ jobs:
       run: black --check src
     - name: Type checking with mypy
       run: mypy src
-    - name: Test with unittest
-      run: python setup.py test
+    - name: Test with pytest
+      run: pytest test/
