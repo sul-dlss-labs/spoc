@@ -27,8 +27,7 @@ jobs:
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
-        # Use the --select or --ignore flags to only check or ignore specific rules
-        # See https://flake8.pycqa.org/en/latest/user/options.html#cmdoption-flake8-select
+        # See https://flake8.pycqa.org/en/latest/user/options.html
         flake8 . --count --show-source --statistics --max-line-length=127 --exclude=doc
     - name: Code formatting with black
       run: |
