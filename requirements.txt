@@ -5,3 +5,4 @@ jupyter-book
 matplotlib
 numpy
 ghp-import
+flake8
