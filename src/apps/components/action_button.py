@@ -1,4 +1,4 @@
-import streamlit.components.v1 as components
+import streamlit.components.v1 as components  # type: ignore
 from jinja2 import Template
 
 with open("src/apps/components/action_button.html") as fo:

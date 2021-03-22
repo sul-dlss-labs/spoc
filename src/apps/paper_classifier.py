@@ -1,7 +1,7 @@
 import pathlib
-import pandas as pd
-import streamlit as st
-import streamlit.components.v1 as components
+import pandas as pd  # type: ignore
+import streamlit as st  # type: ignore
+import streamlit.components.v1 as components  # type: ignore
 from jinja2 import Template
 
 st.set_page_config(page_title="Paper Classifier")
