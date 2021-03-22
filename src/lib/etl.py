@@ -1,7 +1,9 @@
 """ETL for SPOC Papers"""
-import spacy
-import pandas as pd
-import lxml.etree as etree
+import spacy  # type: ignore
+import pandas as pd  # type: ignore
+import lxml.etree as etree  # type: ignore
+
+from typing import Any, Dict, List
 
 TEI = {"tei": "http://www.tei-c.org/ns/1.0"}
 
@@ -10,7 +12,7 @@ def get_date(xml_doc: etree.Element) -> str:
     """Extracts Publication Date if it exists"""
     pub_date_element = xml_doc.find(
         "tei:teiHeader/tei:fileDesc/tei:publicationStmt/tei:date",
-        namespaces=TEI
+        namespaces=TEI,  # noqa: E501
     )
     if pub_date_element is not None:
         pub_date = pub_date_element.attrib.get("when", "")
@@ -24,7 +26,9 @@ def get_entities(doc: spacy.tokens.Doc) -> tuple:
     species, places, habitats = [], [], []
 
     def __add_ent__(entity):
-        record_info = [(token._.canonical, token._.entity_desc) for token in entity]  # noqa: E501
+        record_info = [
+            (token._.canonical, token._.entity_desc) for token in entity
+        ]  # noqa: E501
         if entity.label_.startswith("SPECIES"):
             species.extend(record_info)
         elif entity.label_.startswith("LOCATION"):
@@ -53,16 +57,13 @@ def get_all_text(xml_doc: etree.Element) -> str:
     return full_text
 
 
-# def label_handler(ent)
-
-
 def process_div(
     div: etree.Element,
     nlp: spacy.lang,
     paper_name: str,
     publication_date: str,
     div_number: int,
-) -> dict:
+) -> List[Dict[Any, Any]]:
     """Process XML div using spaCy NLP pipeline"""
     text = ""
     for row in div.itertext():
@@ -95,7 +96,7 @@ def process_xml(raw_xml: str, filename: str, nlp: spacy.lang) -> list:
     # Extracts Publication Date if it exists
     pub_date_element = tei_xml.find(
         "tei:teiHeader/tei:fileDesc/tei:publicationStmt/tei:date",
-        namespaces=TEI
+        namespaces=TEI,  # noqa: E501
     )
     if pub_date_element is not None:
         publication_date = pub_date_element.attrib.get("when", "")
@@ -103,9 +104,7 @@ def process_xml(raw_xml: str, filename: str, nlp: spacy.lang) -> list:
         publication_date = ""
     records = []
     for i, div in enumerate(divs):
-        records.extend(process_div(div,
-                                   nlp,
-                                   filename,
-                                   publication_date,
-                                   i + 1))
+        records.extend(
+            process_div(div, nlp, filename, publication_date, i + 1)
+        )  # noqa: E501
     return pd.DataFrame(records)
