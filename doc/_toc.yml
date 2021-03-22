@@ -8,11 +8,15 @@
   chapters:
   - file: data-prep
   - file: grobid-pdf
-  
+
 - part: Data and Model Documentation
   chapters:
   - file: model-documentation
 
+- part: FastAPI Endpoint
+  chapters:
+  - file: api
+  
 - part: Future
   chapters:
   - file: future
