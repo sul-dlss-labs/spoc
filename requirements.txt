@@ -6,3 +6,5 @@ matplotlib
 numpy
 ghp-import
 flake8
+spacy
+uvicorn
