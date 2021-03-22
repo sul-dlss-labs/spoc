@@ -36,7 +36,5 @@ with main_col:
 with action_col:
     next = st.button("NEXT >")
     components.html(
-        action_template.render(status=paper["status"].iloc[0]),
-        height=75,
-        width=65
+        action_template.render(status=paper["status"].iloc[0]), height=75, width=65
     )
