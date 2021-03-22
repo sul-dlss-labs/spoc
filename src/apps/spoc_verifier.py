@@ -11,31 +11,7 @@ with open("src/apps/components/action_button.html") as fo:
 
 main_col, geo_col, action_col = st.beta_columns([2, 1, 0.5])
 
-species = pd.DataFrame(
-    [
-        {
-            "Paper ID": "A",
-            "Instance ID": "A02",
-            "Species - Genus": None,
-            "Time": None,
-            "Place": None,
-        },
-        {
-            "Paper ID": "A",
-            "Instance ID": "A03",
-            "Species - Genus": "Tonicella lineata",
-            "Time": "1982",
-            "Place": "Grimes Point",
-        },
-        {
-            "Paper ID": "B",
-            "Instance ID": "B01",
-            "Species - Genus": None,
-            "Time": None,
-            "Place": None,
-        },
-    ]
-)
+species = pd.read_json("data/species-records.json")
 
 with main_col:
     """
