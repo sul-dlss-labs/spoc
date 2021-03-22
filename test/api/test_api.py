@@ -1,6 +1,12 @@
+# noqa: E402
+import os
+import sys
 from fastapi.testclient import TestClient
 
-from src.api.main import app  # type: ignore
+ROOT_PATH = os.path.abspath(".")
+sys.path.append(ROOT_PATH)
+
+from src.api.main import app  # type: ignore # noqa: E402
 
 client = TestClient(app)
 
@@ -8,7 +14,7 @@ client = TestClient(app)
 def test_read_main():
     response = client.get("/")
     assert response.status_code == 200
-    assert response.json() == {"message": "SpOc Endpoint"}
+    assert response.json() == {"message": "SPOC Endpoint"}
 
 
 def test_read_paper():

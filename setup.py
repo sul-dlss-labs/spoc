@@ -9,9 +9,9 @@ def read(fname):
 setup(
     name="SPOC Verifier",
     version="0.0.1",
-    license='LICENSE.md',
-    long_description=read('README.md'),
-    setup_requires=['pytest-runner'],
+    license="LICENSE.md",
+    long_description=read("README.md"),
+    setup_requires=["pytest-runner"],
     # test_suite="test",
-    tests_require=['pytest']
+    tests_require=["pytest"],
 )

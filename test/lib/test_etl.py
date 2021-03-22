@@ -7,7 +7,7 @@ import pytest
 ROOT_PATH = os.path.abspath(".")
 sys.path.append(ROOT_PATH)
 
-import src.lib.etl as etl
+import src.lib.etl as etl  # noqa: E402
 
 
 @pytest.fixture
@@ -23,7 +23,7 @@ def empty_tei():
 <TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 xsi:schemaLocation="http://www.tei-c.org/ns/1.0 /opt/grobid/grobid-home/schemas/xsd/Grobid.xsd"
- xmlns:xlink="http://www.w3.org/1999/xlink"></TEI>""".encode()
+ xmlns:xlink="http://www.w3.org/1999/xlink"></TEI>""".encode()  # noqa: E501
     )
 
 

@@ -22,8 +22,9 @@ def get_date(xml_doc: etree.Element) -> str:
 def get_entities(doc: spacy.tokens.Doc) -> tuple:
     """Iterate through document's entities and add to lists"""
     species, places, habitats = [], [], []
+
     def __add_ent__(entity):
-        record_info = [(token._.canonical, token._.entity_desc) for token in entity]
+        record_info = [(token._.canonical, token._.entity_desc) for token in entity]  # noqa: E501
         if entity.label_.startswith("SPECIES"):
             species.extend(record_info)
         elif entity.label_.startswith("LOCATION"):
@@ -53,6 +54,7 @@ def get_all_text(xml_doc: etree.Element) -> str:
 
 
 # def label_handler(ent)
+
 
 def process_div(
     div: etree.Element,
