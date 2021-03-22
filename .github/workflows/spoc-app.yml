@@ -35,4 +35,3 @@ jobs:
       run: mypy src
     - name: Test with unittest
       run: python setup.py test
-      
