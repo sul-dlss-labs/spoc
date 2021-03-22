@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 /opt/grobid/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">The distribution of particulate organic carbon and sediment in the Elwha River dispersal system during the dam removal process</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability status="unknown"><licence/></availability>
+                <date when="2010-08-22">August 8, 2010</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct>
+					<analytic>
+						<author role="corresp">
+							<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Ariel</forename><forename type="middle">Mei</forename><surname>Townsend</surname></persName>
+							<email>arielt@uw.edu</email>
+							<affiliation key="aff0">
+								<orgName type="department" key="dep1">Friday Harbor Laboratories</orgName>
+								<orgName type="department" key="dep2">Contact Information</orgName>
+								<orgName type="institution" key="instit1">University of Washington</orgName>
+								<orgName type="institution" key="instit2">Friday Harbor</orgName>
+								<address>
+									<postCode>98250</postCode>
+									<region>WA</region>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff1">
+								<orgName type="department" key="dep1">Department of Oceanography</orgName>
+								<orgName type="department" key="dep2">Northeast Boatstreat Seattle</orgName>
+								<orgName type="institution">University of Washington</orgName>
+								<address>
+									<postCode>1503, 98195</postCode>
+									<region>WA</region>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">The distribution of particulate organic carbon and sediment in the Elwha River dispersal system during the dam removal process</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date/>
+						</imprint>
+					</monogr>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.6.1" ident="GROBID" when="2021-03-02T18:58+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>particulate organic carbon</term>
+					<term>sediment</term>
+					<term>Elwha River</term>
+				</keywords>
+			</textClass>
+			<abstract>
+				<p>The delivery and deposition of particulate organic carbon (POC) into the marine environment via rivers impacts local biological and geological processes as well as the global carbon cycle. This is especially the case in small mountainous rivers, such as the Elwha River, Washington, which delivers a significant fraction of particulate organic carbon to the Strait of Juan de Fuca annually. Recently, the Elwha has begun undergoing dam deconstruction. To study the resulting fluctuations of POC in response to dam removal, water and seabed samples were collected and analyzed using loss on ignition to estimate levels of POC. The concentrations of suspended sediments in the water column and compositions of grain size in the marine seabed sediments were also examined. Seabed samples were found to contain higher concentrations of POC compared to surface water samples. POC levels increased when more suspended material was present in the river, and also when seabed samples consisted primarily of mud. Overall, the major concentrations of POC occurred below the Glines Canyon and Elwha Dams, where sediment is being released and eroded due to dam removal processes, and also in the river mouth, which is an area of high turbidity.</p>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">Introduction</head><p>Small mountainous rivers (SMRs), including the Elwha River near Port Angeles, Washington in its pre-dammed condition, are one of the primary transportation routes for terrestrial particulate organic carbon (POC) to marine ecosystems <ref type="bibr" target="#b14">(Richey et al., 2002;</ref><ref type="bibr" target="#b9">Komada et al., 2004)</ref>. POC sorbes to fine, mineral surfaces, such as silt and clay , and its delivery from land to the marine environment via rivers is crucial in understanding the global carbon cycle <ref type="bibr" target="#b9">(Komada et al., 2004;</ref><ref type="bibr" target="#b15">Wheatcroft et al., 2012)</ref>.</p><p>Since the construction of the Elwha and Glines Canyon dams on the Elwha River, despite their run-of-the-river designs, an estimated 13x10 6 m 3 of sediment has accumulated behind them <ref type="bibr" target="#b12">(Mussman et al., 2008)</ref>, resulting in a scarcity of terrestrial carbon reaching the Strait of Juan de Fuca from this river. Fine sediments such as clay and silt (&lt;0.0620 mm in diameter as determined using the Wentworth Grain Size Scale) make up the majority of the material behind the dams (7x10 6 m 3 ) <ref type="bibr" target="#b12">(Mussman et al., 2008)</ref> and a significant fraction of this will be carried to the delta as the dams are removed.</p><p>Therefore, it is reasonable to assume that POC will be released corollary to these fine particles and an increased amount of carbon will be available for the physical, geological, and biological processes that affect the Elwha River and nearshore zone. This paper will evaluate the evolution of POC as it travels from above the Glines Canyon dam to the Strait of Juan de Fuca, how fluctuations in POC compare to fluctuations in suspended and seabed sediments. Lastly, this paper will briefly discuss the consequences of this pulse of carbon could have on the surrounding ecosystem.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">Background</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1">Physical Location</head><p>Originating in the southern Bailey Range of the Olympic Mountains <ref type="bibr" target="#b4">(Duda et al., 2008;</ref><ref type="bibr" target="#b12">Mussman et al., 2008)</ref>, the Elwha River is a small mountainous river with a basin size of 833 km 2 <ref type="bibr" target="#b4">(Duda et al., 2008)</ref>. It extends 72 km north, winding through Olympic National Park until it drains into the Strait of Juan de Fuca, a marine channel connecting Puget Sound to the Pacific Ocean <ref type="bibr" target="#b4">(Duda et al., 2008)</ref>. Characterized by warm, dry summers and cool, wet winters, the majority of precipitation delivered to the Elwha falls as snow, resulting in two peak discharges per year <ref type="bibr" target="#b5">(Duda et al., 2010)</ref>. River discharge increases in June due to melting snow pack and in December due to increased precipitation <ref type="bibr" target="#b5">(Duda et al., 2010;</ref><ref type="bibr">Fig 1)</ref>, with a maximum mean monthly discharge reaching upwards of ~64 m 3 (discharge data is based on USGS monitoring at McDonald <ref type="bibr">Bridge from 1928</ref><ref type="bibr">Bridge from -2005</ref>  <ref type="bibr" target="#b4">(Duda et al., 2008)</ref>. In the early 1900s, two run-of-the-river dams were built along the river. The Elwha Dam, located 8 km from the river mouth, was completed in 1913 and formed Lake Aldwell <ref type="bibr" target="#b4">(Duda et al., 2008;</ref><ref type="bibr" target="#b12">Mussman et al., 2008)</ref> and the Glines Canyon Dam, completed in 1927, is located 22 km from the river mouth and formed Lake Mills <ref type="bibr" target="#b4">(Duda et al., 2008;</ref><ref type="bibr" target="#b12">Mussman et al., 2008)</ref>. An estimated 10.6x10 6 m 3 of sediment has become trapped in Lake Mills, and a further 3.00x10 6 m 3 of sediment has been trapped behind Lake Aldwell <ref type="bibr" target="#b12">(Mussman et al., 2008)</ref>. In 1992, Congress passed the Elwha River Ecosystem and Fisheries Restoration Act, initiating the removal of the dams <ref type="bibr" target="#b4">(Duda et al., 2008;</ref><ref type="bibr" target="#b12">Mussman et al., 2008)</ref>. Dam removal began in September, 2011, and by spring 2012, the Elwha Dam had been completely removed (nps.gov/olym/naturalscience/elwha-ecosystem).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2">Topical Background</head><p>2.2.1. The importance of small, mountainous rivers in the transport of POC Small mountainous rivers, such as the Elwha, are defined by their basin size (&lt;10,000 km 2 ), and episodic discharges <ref type="bibr" target="#b9">(Komada et al., 2004;</ref><ref type="bibr" target="#b15">Wheatcroft et al., 2012)</ref>.</p><p>Due to their high erodibility, these systems account for a significant amount of the total global flux of sediment and particulate organic carbon (POC) (17-35%) to the worlds oceans <ref type="bibr" target="#b15">(Wheatcroft et al., 2012;</ref><ref type="bibr" target="#b11">Hatten et al., 2010;</ref><ref type="bibr" target="#b9">Komada et al., 2004)</ref>. Studies in other SMRs, such as the Alsea, Or, and the Santa Clara, Ca, show a positive correlation between discharge and total suspended sediment as well as between discharge and POC, with the majority of sediment and POC deposited during flood events <ref type="bibr" target="#b0">(Blair et al., 2004)</ref>. It should be noted that dammed rivers are an exception to this observation as suspended sediments can become trapped behind dams, so their seasonal concentrations are not always correlated with discharge <ref type="bibr" target="#b15">(Hatten at al., 2012)</ref>.</p><p>Alternate studies in SMRs, such as the Santa Clara, Ca, and the Eel, Ca, showed that the sediments in the subaqueous deltas were allochotonous, suggesting an efficient transfer of sediments from its source directly to the river delta <ref type="bibr" target="#b1">(Blair et al., 2003;</ref><ref type="bibr" target="#b9">Komada et al., 2004)</ref>. <ref type="bibr" target="#b0">Blair et al., 2004</ref>, found that seabed sediments in the Eel River showed characteristics of the upland sources where they originated. Therefore, while POC is usually modified as it is carried down river, due to consumption by bacteria or respiration from photosynthesis <ref type="bibr" target="#b0">(Blair et al., 2004;</ref><ref type="bibr" target="#b13">Richey et al., 1990)</ref>, in SMRs, the rapid transfer of sediments to the river delta prevents extreme alteration of POC down the river. OC concentrations in the surface sediments in the Fly River delta, for example, showed high terrigenous OC concentrations prior to being deposited onto the seabed <ref type="bibr" target="#b10">(Goni et al., 2006)</ref>. This pattern differs from large rivers such as the Amazon, where nearly 70% of the terrestrial carbon is lost as sediments enter the river delta <ref type="bibr" target="#b0">(Blair et al., 2004;</ref>).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2.2.">Particulate Organic Carbon</head><p>The delivery and utilization of terrestrial carbon in marine sediments is critical to both the global carbon cycle <ref type="bibr" target="#b15">(Wheatcroft et al., 2012;</ref><ref type="bibr" target="#b9">Komada et al., 2004;</ref><ref type="bibr" target="#b14">Richey et al., 2002)</ref>, and the local environment. POC is omnipresent, and adsorbs to fine, suspended particles such as silts and clays that are carried from the mouth of the river seaward in a positively buoyant plume, allowing for greater dispersal over the river delta than coarser sediments that are deposited near the river mouth <ref type="bibr">(Wright and Nittrouer, 1995)</ref>. Once it enters the marine ecosystem, POC is permanently buried in marine sediments, re-cycled back to the atmosphere, or used for respiration <ref type="bibr">(Cole et al., 2007)</ref>. For example, Hedges and Keil, 1995, cited laboratory experiments where organic matter was desorbed and consumed by aerobic bacteria.</p><p>Exposure time in the water column can alter concentrations of POC, altering the amount of POC preserved in seabed sediments versus surface sediments. Because the majority of sediments that accumulate on the seabed are deposited during winter storms <ref type="bibr" target="#b0">(Blair et al., 2004)</ref>, the concentrations of POC in bottom samples are expected to differ due to the incorporation of marine carbon and exposure to bacteria as sediments accumulate on the seabed <ref type="bibr" target="#b0">(Blair et al., 2004)</ref>. In the Fly River delta, Papua New Guinea, for example, seabed POC concentrations were higher on average than surface POC concentrations <ref type="bibr" target="#b10">(Goni et al., 2006)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">Methods</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1">Collection</head><p>Samples were collected the week of April 2, 2012 through April 6, 2012 from three different locations: the reservoir surfaces in the Olympic National Park, the seabed and water column of the delta onboard the R/V Clifford A. Barnes, and in the river mouth onboard a small, inflatable boat ( <ref type="figure" target="#fig_1">Fig. 2</ref>; <ref type="table">Table 1</ref>), and also May 9, 2012 from the river mouth and in the river below the Elwha dam. River discharge information during that time was obtained from the USGS site 12045500 at McDonald Bridge near Port Angeles, Washington (waterdata.usgs.gov, <ref type="figure" target="#fig_0">Fig. 1</ref>). Water samples were taken at the water surface using a Niskin bottle and sediment samples were taken using a Shipek grab sample or Van Veen. <ref type="table">Table 1</ref>: Location and description of each sample, with concentrations of POC (g) and POC (g POC/g dry sediment). </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2">Loss on ignition</head><p>To measure the amount of organic material in water and bottom sediment samples, 0.7 micron Glass Fiber Filters (GFF's) were pre-weighed, placed in an aluminum tin, weighed to 0.001g, and cleaned by combustion in a muffle furnace at 500ºC for five hr (this time does not include the time needed to heat up to full temperature or the 90 minutes after the muffler was set to 50ºC to cool the samples. The total process of combustion took 7.5 hr). The G.F.F.'s were stored in a 50ºC oven, then placed in a dessicator for 60 minutes to bring them to room temperature without the risk of water absorption, and weighed. Once cleaned, water samples were filtered through GFFs and the volume filtered was recorded. Wet filters were placed in clean, combusted aluminum tins, weighed and stored in the oven before being brought to room temperature in a dessicator for 60 minutes, weighed a second time, and placed in the muffle furnace to be combusted for five hours at 500º C. After being combusted, samples were stored in the 50ºC oven, brought to room temperature in the dessicator, weighed and stored.</p><p>Bottom sediment samples taken from the same locations as the Niskin samples were also combusted. The samples were homogenized through mixing, and 10-20 g (depending on the amount of liquid present in each sample) were weighed in a combusted aluminum tin.</p><p>From this step, the same procedure for combustion was followed as for the filtered samples.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.3">Grain size analysis</head><p>Wet and dry sieving was performed to separate sediments according to phi size.</p><p>Wet sieving involved the homogenization of samples by mixing, with pebbles and cobbles greater than -4 phi in size removed, dried, weighed, collected, and recorded.</p><p>Next, a subsample of 50g was removed, weighed, and sieved through a 4 phi sieve, using a dispersant and deionized (DI) water to loosen particles. Sediments less than 4 phi in size were collected in pre-weighed jar. The sediments greater than 4 phi were collected, dried overnight, and dry sieved using eight sieves ranging from 4 to -4 phi in 1 phi intervals stacked according to size. Dry sediments were added to the sieves and vigorously shaken for 10-15 minutes to thoroughly separate grain sizes. The weight of material in each sieve was recorded.</p><p>Sediments smaller than 4 phi were sorted through pipette analysis, by using the settling velocity of sediments ranging from 4 phi to 8 phi to separate grain sizes.</p><p>Samples were mixed with dispersant to suspend the material, subsampled at fixed time intervals, and the remaining water was evaporated. The final weight was multiplied by the ratio of the subsample to the total volume of sample to calculate the amount of material per phi size.</p><p>Grain size statistics for each sample were calculated using the method by Folk and Ward (1957), and Gradistat.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.4">Suspended-Sediment Concentration</head><p>In order to determine the concentration of suspended sediments for each sample, surface samples were filtered through 0.7 micron GFF filters to collect the sediment. The filtration system was cleaned with D.I. water, the volume of sample was recorded (in general, most samples were ~1 L), and the water was pulled through the filter using a pump. After filtration, the samples were dried, and the wet weight of each sample was subtracted from the dry weight to calculate the total amount of sediment trapped.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.5">Analysis</head><p>Loss-on-ignition (LOI) can be used to calculate the rough amount of organic material and carbonate on sediments <ref type="bibr" target="#b7">(Heiri et al., 2001)</ref>. Between 500º-550ºC, organic matter is lost in the form of carbon dioxide. Carbonates are converted to gas form between 900º-1000ºC <ref type="bibr" target="#b7">(Heiri et al., 2001</ref>). Overall, a net loss in the weight of the sample will be seen through the process of LOI. The weight loss in samples was assumed to be organic matter due to the muffle temperature (muffle was set to 500º).</p><p>For this study, the total organic matter (TOC) analyzed on sediment samples was defined as particulate organic carbon due to its ability to become caught on a 0.7 micron filter. Terrigenous total organic matter (TOC) is defined as dissolved organic carbon (DOC) and particulate organic carbon (POC) <ref type="bibr" target="#b13">(Richey et al., 1990)</ref>. POC, due to its larger size (DOC &lt;0.5 um and POC &gt;0.5um), can be trapped by filters while DOC passes through. Therefore, any organic matter found on filters was assumed to be POC.</p><p>Concentrations of POC were plotted using ArcMap at their collection location, using a color scale to indicate variations in seabed and surface samples.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">Results</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.1">Conditions during sampling</head><p>Bottom and water column samples were collected from the R/V Barnes April 4, 2012, and May 9, 2012 <ref type="figure" target="#fig_1">(Fig. 2)</ref>. NOAA station 9444090 indicated the variation between higher high tide and lower low tide for that day was 1.524 m (tidesandcurrents.noaa.gov).</p><p>Two delta samples, waypoints 138 and 151, were collected during flood tide and one delta sample, waypoint 150, was collected during ebb tide ( <ref type="figure" target="#fig_0">Fig. 2; Table 1</ref>). Surface water samples and seabed samples were collected April 5, 2012 while the tide was flooding. The tidal range between higher high tide and lower low tide was 1.67 m for that day. River discharge during the week of April 2-April 6, 2012 reached ~39 m 3 (nwis.waterdata.usgs.gov). River discharge was slightly higher when May 9 samples were taken, peaking at ~56 m 3 (nwis.waterdata.usgs.gov).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.2">Suspended sediment</head><p>On the subaqueous river delta, the average concentration of sediment (the total material collected on 0.7 micron GFFs) at the three sites in the subaqueous delta was 0.00347 g/L, and at the four sites within the river mouth, 0.494 g/L. Above the river mouth, suspended sediment concentrations were slightly lower, 0.00258 g/L in the reservoir Lake Mills, 0.170 g/L in the river below the reservoir Lake Mills, and 0.901 g/L in the river below the Elwha Dam <ref type="table">(Table 1)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.3">Grain size</head><p>Sediment in the subaqueous delta was poorly sorted, consisting primarily of gravel and sand (57% and 32%, respectively, at waypoint 138, and ~26% and ~62%, respectively, at waypoint 151, 29% and 69%, respectively, at waypoint 150). In the river mouth, sediment was moderately sorted, consisting mostly of sand and mud (~23% and ~75%, respectively, at waypoint 21, and ~12% and ~88%, respectively, at waypoint 22).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.4">Carbon concentrations</head><p>The concentrations of POC on suspended sediments associated with the subaqueous delta ranged from 0.000300 to 0.00210 g POC/g dry sediment, with an average value of 0.00150 g POC/g dry sediment and standard deviation of 0.000986 (n=3). River mouth concentrations of POC on suspended sediments were the highest, ranging from 0.0252 -0.0303 g POC/g dry sediment, with an average of 0.0277 g POC/g dry sediment and standard deviation of 0.00359 (n=2). In comparison, the concentrations of POC within the sediment collected above the river mouth varied down the river, with 0.000500 g POC/g dry sediment in the reservoir Lake Mills, 0.239 g POC/g dry sediment in the river below Lake Mills, and 0.0278 g POC/g dry sediment in the river below the Elwha dam <ref type="figure" target="#fig_2">(Fig. 3)</ref>. Samples taken on May 9, 2012 showed a similar pattern of variation, ranging from 0.00659 g POC/g dry sediment in Lake Mills, to 0.00319 g POC/g dry sediment in the river below the Elwha Dam, and 0.00310 g POC/g dry sediment in the river mouth <ref type="figure" target="#fig_0">(Fig. 3, Table 1</ref>).</p><p>In the seabed samples collected offshore of the river delta, there was an average concentration of 0.0316 g POC/g dry sediment with a standard deviation of 0.0300 (n=3).</p><p>In the river mouth, the average concentration of POC for bottom sediment was greater, at 0.0715 g POC/g dry sediment with a standard deviation of 0.00123 (n=2) <ref type="figure" target="#fig_3">(Fig. 4)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.">Discussion</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.1">River discharge and oceanic conditions in the Elwha River delta during sampling</head><p>Conditions such as river discharge and tidal cycles can influence sediment concentrations in the Elwha subaqueous delta and river mouth. For this project, samples were collected on different days, however during the week of April 2-April 6, 2012, the river discharge was a relatively low, constant level at ~ 39 m 3 s -1 . This suggests that although samples in different locations were collected on different days, conditions were comparable due to the lack of extreme discharge from one collection period to the next.  The Elwha River's two peak discharges generally correspond to major sediment discharges in SMRs, as they do in other SMRs <ref type="bibr" target="#b15">(Wheatcroft et al., 2012)</ref>. This implies that the seabed sediment samples collected likely had been deposited months prior, compared to more recently delivered suspended sediment that existed in the plume.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.2">Concentrations of POC and grain sizes in subaqueous delta seabed samples</head><p>Each seabed sample was defined as poorly sorted, ranging in composition from coarse gravel to fine silt. Concentrations of POC in samples that were composed primarily of silt were higher than in samples composed primarily of sand and gravel <ref type="bibr">(Fig. 5 &amp; 6)</ref>. Due to their size, silts are more likely to be suspended in the water column than sand or gravel. Because POC sorbs to these types of sediments, our data suggests that POC will increase as turbidity increases <ref type="bibr" target="#b10">(Goni et al., 2006)</ref>.</p><p>One exception to this trend is sample WPT S1, which displays a significant amount of POC despite consisting primarily of 85% gravel and 2% mud <ref type="figure">(Fig. 5)</ref>. WPT S1 is located further from the other subaqueous delta and river mouth samples <ref type="figure" target="#fig_1">(Fig. 2:   Fig 4)</ref>, in a protected, sloping area that could allow for greater accumulation of organic material. Over time, a large amount of marine carbon consisting of dead organisms and respired CO 2 likely accumulated on the sediments. Also, while organic carbon usually sorbs to fine-grained sediments, it can also adsorb to larger sediments and sediments with irregularly shaped surfaces <ref type="bibr">(Hedges and Keil, 1995)</ref> such as the sand at WPT S1.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.3">Patterns of POC concentrations in surface and seabed sediments</head><p>POC concentrations were higher below the Glines Canyon and former Reservoir Lake Aldwell below the Elwha dam, and in the river mouth <ref type="figure" target="#fig_5">(Fig. 7)</ref>. As a whole,   concentrations of POC on seabed and suspended sediments indicated higher concentrations in the river mouth than the subaqueous delta <ref type="figure" target="#fig_6">(Fig. 8</ref>), although seabed sediments had consistently higher concentrations of POC than surface samples <ref type="figure" target="#fig_6">(Fig. 8)</ref>.</p><p>These patterns are based on a small number of samples (five in the river mouth, seven in the subaqueous delta), which limited the ability to draw conclusions about spatial variability. Nethertheless, both suspended and seabed sediment samples in the river mouth show a significant increase in POC, possibly due to processes that occur at this location. In the river mouth, an estuarine turbidity maximum can exist, prompting increased levels of suspended material <ref type="bibr" target="#b10">(Goni et al., 2006)</ref>, including POC sorbed to muds. Results show a positive linear correlation between the amounts of POC and the amount of particles filtered <ref type="figure" target="#fig_7">(Fig. 9)</ref>, making this explanation plausible.</p><p>On the subaqueous delta, the correlation between concentrations of POC on suspended sediment and seabed sediments at each station became harder to quantify.</p><p>Although seabed sediments retained higher values of POC compared to suspended sediments, their levels of abundance fluctuate more broadly among stations than do POC values on suspended sediments. For example, while WPT 150 and WPT 138 share similar levels of POC in the suspended sediments (0.00210 g POC/g sediment and 0.00200 g POC/g sediment), the concentration of POC in the bottom sediments at WPT 150 was significantly greater than in the suspended particles (0.0503 g POC/g dry sediment) while the concentration of POC in seabed sediments at WPT 138 was only slightly higher than that in the suspended particles (0.0063 g POC/g dry sediment). A  similar trend was discovered in the Fly River Delta, Papua New Guinea <ref type="bibr" target="#b10">(Goni et al., 2006)</ref> where the locations of high concentrations of POC in bottom sediments did not directly correlate to the locations of high concentrations of POC in surface plume sediments.</p><p>From that study, and the results of this study which also show different levels of POC between surface and seabed sediments, it can be concluded that although both seabed and suspended sediments are discharged from similar sources, their distribution from the river mouth seaward are influenced by both river plume processes and oceanographic conditions. This is consistent with research in the Eel River shelf, California, which shows that the deposition rate of sediments change with river discharge and the level of wave stress in the nearshore environment <ref type="bibr" target="#b15">(Wheatcroft et al., 2012)</ref>.</p><p>Alternate studies on the Eel River have found that due to the rapid delivery of sediment to the river mouth, the terrestrial carbon adsorbed to sediments remained relatively undisturbed compared to larger rivers such as the Amazon where as much as 70% of the terrestrial carbon is lost once the sediment discharges onto the subaqueous delta <ref type="bibr" target="#b0">(Blair et al., 2004;</ref><ref type="bibr" target="#b6">Hedges et al., 1997)</ref>. Not only do the rapidly deposited sediments maintain terrestrial POC, but mud that later accumulates on the delta incorporates marine carbon as well, due to exposure to biological processes such as respiration <ref type="bibr" target="#b0">(Blair et al., 2004)</ref>. In the Elwha delta, seabed sediments were deposited during the major past discharges, months before samples were collected, allotting time for them to accumulate marine carbon along with the terrestrial carbon sorbed to them, unlike the surface sediments in the plume that may only contain terrestrial carbon.</p><p>Flocculation also occurs as sediments enter the marine environment due to the attraction between cations in seawater and negative charges on the fine, mineral surfaces of suspended sediments, which increases settling velocity and deposition rates <ref type="bibr">(Wright and Nittrouer, 1995)</ref> and results in greater deposition of mud onto the subaqueous delta seabed. While we cannot be certain flocculation is the main reason behind elevated POC levels in seabed samples, it is a reasonable hypothesis supported by increased POC and fine-grained sediment concentrations in seabed samples in the river mouth and subaqueous delta, along with decreased levels of POC in surface samples that would have resulted from muds flocculating and sinking to the seabed. This scenario may have also occurred in the river mouth, where seabed samples are higher in POC concentrations than surface samples.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="5.4">Further Studies</head><p>Due to POC's close association with fine, silty sediments, an influx of these particles should bring an influx of carbon. This is the case in the Elwha, where the majority of sediment trapped behind the dams consists of finer material <ref type="bibr" target="#b12">(Mussman et al., 2008)</ref>. Below the Glines Canyon Dam and in the river below Lake Aldwell (located above the Elwha dam), the concentrations of POC increased to levels comparable to those in the river mouth. The Glines Canyon Dam removal is still ongoing, and although the Elwha Dam removal has been completed, sediment from former Lake Aldwell is still being eroded downstream. From these observations, it is reasonable to assume that elevated levels of POC adsorbed to fine material is being released, as sediment is washed downstream from the Lake Mills, above the Glines Canyon dam, and Lake Aldwell.</p><p>Future dam removal projects should take into consideration the possible impacts of increased levels of carbon associated with trapped particles, especially SMRs such as the Elwha River due to high efficiency transfer of particles in SMRs. Studies should also focus on how increased levels of POC will affect bacteria populations that act to respire carbon as they move towards the site of deposition.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Conclusions</head><p>Based on the results of this research, we can predict that increases in POC are related to discharges of sediment as it is released and eroded downstream in response to dam removal processes.</p><p>• Increased amounts of POC correlated to increased amounts of suspended sediments. Seabed sediment samples that were mostly mud had higher POC levels that seabed sediment samples that were mostly sand or gravel.</p><p>• Overall, seabed samples had greater concentrations of POC than suspended sediment samples. Surface water samples in the delta had lower levels of POC than seabed samples likely due to flocculation and a faster residence time.</p><p>• Below the Glines Canyon dam and Lake Aldwell (located above the Elwha dam), the concentrations of POC increased. POC increased in the river mouth as well. While influxes of sediment from the dams is hypothesized to be the cause of this increase in POC, turbidity is believed to have resulted in an increase in POC associated with suspended sediments in the river mouth.</p><p>Wright, L.D., Nittrouer, C.A., 1995. Dispersal of river sediments in costal seas: six contrasting cases. Estuanes 18, 494-508.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 :</head><label>1</label><figDesc>Annual Elwha River Discharge taken at McDonald Bridge near Port Angeles, WA May 1, 2011-May 1, 2012. The red rectangle indicates the April 2-April 6, 2012 sampling period.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 :</head><label>2</label><figDesc>Locations of samples taken, labeled by waypoint, from the April 2-April 6, 2012 cruise and May 9, 2012 trip.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 3 :</head><label>3</label><figDesc>POC concentrations in suspended sediment samples in the Elwha River.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 4 :</head><label>4</label><figDesc>Concentrations of POC in seabed samples in the river mouth and subaqueous delta.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figures 5 &amp; 6 :</head><label>6</label><figDesc>Grain size analysis for seabed sediment samples (top) compared to corresponding concentrations of POC (g POC/g dry sediment) (bottom) at the same location.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Figure 7 :</head><label>7</label><figDesc>Concentrations of Particulate Organic Carbon on suspended-sediment samples based on distance from the Elwha River Mouth from the April 2-April 6, 2012 cruise and the May 9, 2012 cruise. Negative values indicate samples taken on the subaqueous delta, positive samples indicate samples taken in the river above the river mouth. Distance was calculated using a straight edge ruler.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Figure 8 :</head><label>8</label><figDesc>Concentrations of POC on suspended-sediment samples compared to seabed sediment samples. Negative values indicate samples taken on the subaqueous delta. Distance was calculated using a straight edge ruler and the locations of the Glines Canyon and Elwha dams for reference.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_7"><head>Figure 9 :</head><label>9</label><figDesc>Concentrations of Particulate Organic Carbon vs suspended sediment concentrations caught on GFF filters.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>POC/g dry sediment) Distance from River Mouth (KM) May 9, 2012 Samples April 2-April 6, 2012 Samples</head><label></label><figDesc></figDesc><table><row><cell></cell><cell>0.035</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell>0.030</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell>0.025</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell>0.020</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell>0.015</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell>POC (g</cell><cell>0.005 0.010</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell>0.000</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell></cell><cell>-4</cell><cell>-3</cell><cell>-2</cell><cell>-1</cell><cell>0</cell><cell>4</cell><cell>9</cell><cell>16</cell><cell>21</cell></row><row><cell></cell><cell>Delta</cell><cell>Delta</cell><cell>Delta</cell><cell>River</cell><cell>River</cell><cell>River</cell><cell>River</cell><cell>River</cell><cell>River</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell>Mouth</cell><cell>Mouth</cell><cell>Below</cell><cell>Below</cell><cell>Below</cell><cell>Above</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>Elwha</cell><cell>Elwha</cell><cell>Glines</cell><cell>Glines</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>Dam</cell><cell>Dam</cell><cell>Canyon</cell><cell>Canyon</cell></row><row><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell>Dam</cell><cell>Dam</cell></row></table><note></note></figure>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Acknowledgements</head><p>I would like to thank Andrea Ogston, Chuck Nittrouer, and Emily Eidam for their guidance, encouragement, and leadership throughout this apprenticeship. Thank you to the National Science Foundation, Mary Gates Endowment scholarship, the UW Provost, FHL, and Holly &amp; Henry Wendt. Lastly, I would like to acknowledge the staff at Friday Harbor Labs, and the crew of the R/V Clifford A. Barnes and Centennial. Lastly, a special thank you to my fellow Sed-Heads. You guys were the best partners in crime I could have asked for.</p><p>Townsend 27</p></div>
+			</div>
+
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct xml:id="b0">
+	<analytic>
+		<title level="a" type="main">From bedrock to burial: the evolution of particulate organic carbon across couples watershed-continental margin systems</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">N</forename><forename type="middle">E</forename><surname>Blair</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">E</forename><forename type="middle">L</forename><surname>Leithold</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">R</forename><forename type="middle">C</forename><surname>Aller</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Marine Chemistry</title>
+		<imprint>
+			<biblScope unit="volume">92</biblScope>
+			<biblScope unit="page" from="141" to="156" />
+			<date type="published" when="2004" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b1">
+	<analytic>
+		<title/>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">N</forename><forename type="middle">E</forename><surname>Blair</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">E</forename><forename type="middle">L</forename><surname>Leithold</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">S</forename><forename type="middle">T</forename><surname>Ford</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">K</forename><forename type="middle">A</forename><surname>Peeler</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><forename type="middle">C</forename><surname>Holmes</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">D</forename><forename type="middle">W</forename><surname>Perkey</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Geochimica et Cosmochimica Acta</title>
+		<imprint>
+			<biblScope unit="volume">67</biblScope>
+			<biblScope unit="page" from="63" to="73" />
+			<date type="published" when="2003" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b2">
+	<monogr>
+		<title/>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><forename type="middle">J</forename><surname>Cole</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">Y</forename><forename type="middle">T</forename><surname>Prairie</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">N</forename><forename type="middle">F</forename><surname>Caraco</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">W</forename><forename type="middle">H</forename><surname>Mcdowell</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">L</forename><forename type="middle">J</forename><surname>Tranvik</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">R</forename><forename type="middle">G</forename><surname>Striegl</surname></persName>
+		</author>
+		<imprint/>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Plumbing the global carbon cycle: integrating inland waters into the terrestrial carbon budget</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">C</forename><forename type="middle">M</forename><surname>Duarte</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">P</forename><surname>Kortelainen</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><forename type="middle">A</forename><surname>Downing</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><forename type="middle">J</forename><surname>Middelburg</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><surname>Melack</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Ecosystems</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page" from="171" to="184" />
+			<date type="published" when="2007" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Baseline studies in the Elwha River ecosystem prior to dam removal: introduction to the special issue</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><forename type="middle">J</forename><surname>Duda</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><forename type="middle">E</forename><surname>Freilich</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">E</forename><forename type="middle">G</forename><surname>Schreiner</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Northwest science</title>
+		<imprint>
+			<biblScope unit="volume">82</biblScope>
+			<biblScope unit="page" from="1" to="12" />
+			<date type="published" when="2008" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Establishing spatial trends in water chemistry and stable isotopes in the Elwha River prior to dam removal and salmon recolonization</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><forename type="middle">J</forename><surname>Duda</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">H</forename><forename type="middle">J</forename><surname>Coe</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">S</forename><forename type="middle">A</forename><surname>Morley</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">K</forename><forename type="middle">K</forename><surname>Kloehn</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">River Research and Applications</title>
+		<imprint>
+			<biblScope unit="volume">27</biblScope>
+			<biblScope unit="page" from="1169" to="1181" />
+			<date type="published" when="2010" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Sedimentary organic matter preservation: an assessment and speculative synthesis</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><forename type="middle">I</forename><surname>Hedges</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">R</forename><forename type="middle">G</forename><surname>Keil</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Marine Chemistry</title>
+		<imprint>
+			<biblScope unit="volume">49</biblScope>
+			<biblScope unit="page" from="81" to="115" />
+			<date type="published" when="1997" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Loss on ignition as a method for estimating organic and carbonate content in sediments: reproducibility and comparability of results</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">O</forename><surname>Heiri</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">A</forename><forename type="middle">F</forename><surname>Lotter</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">G</forename><surname>Lemcke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Journal of Paleolimnology</title>
+		<imprint>
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="page" from="101" to="110" />
+			<date type="published" when="2001" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Loss of organic matter from riverine particles in deltas</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">R</forename><forename type="middle">G</forename><surname>Keil</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">L</forename><forename type="middle">M</forename><surname>Mayer</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">P</forename><forename type="middle">D</forename><surname>Quay</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><forename type="middle">E</forename><surname>Richey</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><forename type="middle">I</forename><surname>Hedges</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Geochimica et Cosmochimica Acta</title>
+		<imprint>
+			<biblScope unit="volume">61</biblScope>
+			<biblScope unit="page" from="1507" to="1511" />
+			<date type="published" when="1997" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Oceanic Export of Relic Carbon by Small Mountainous Rivers</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">T</forename><surname>Komada</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">E</forename><forename type="middle">R M</forename><surname>Druffel</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">S</forename><forename type="middle">E</forename><surname>Trumbore</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Geophysical Research Letters</title>
+		<imprint>
+			<biblScope unit="page">31</biblScope>
+			<date type="published" when="2004" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Distribution and sources of particulate organic matter in the water column and sediments of the Fly River Delta, Gulf of Papua</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">M</forename><forename type="middle">A</forename><surname>Goni</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">N</forename><surname>Monacci</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">R</forename><surname>Gisewhite</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">A</forename><surname>Ogston</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><surname>Crockett</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">C</forename><surname>Nittrouer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Estuarine Costal and Shelf Science</title>
+		<imprint>
+			<biblScope unit="volume">69</biblScope>
+			<biblScope unit="page" from="225" to="245" />
+			<date type="published" when="2006" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Chemical characteristics of particulate organic matter from a small, mountainous river system in the</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><forename type="middle">A</forename><surname>Hatten</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">M</forename><forename type="middle">A</forename><surname>Goni</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">R</forename><forename type="middle">A</forename><surname>Wheatcroft</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Biogeochemistry</title>
+		<imprint>
+			<biblScope unit="volume">107</biblScope>
+			<biblScope unit="page" from="43" to="66" />
+			<date type="published" when="2010" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Predicting secondary reservoir sediment erosion and stabilization following dam removal</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">E</forename><forename type="middle">K</forename><surname>Mussman</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">D</forename><surname>Zabowski</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">S</forename><forename type="middle">A</forename><surname>Acker</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Northwest Science</title>
+		<imprint>
+			<biblScope unit="volume">82</biblScope>
+			<biblScope unit="page" from="236" to="245" />
+			<date type="published" when="2008" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Biogeochemistry of carbon in the Amazon River</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><forename type="middle">E</forename><surname>Richey</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><forename type="middle">I</forename><surname>Hedges</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">A</forename><forename type="middle">H</forename><surname>Devol</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">P</forename><forename type="middle">D</forename><surname>Quay</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Limnology and Oceanography</title>
+		<imprint>
+			<biblScope unit="volume">35</biblScope>
+			<biblScope unit="page" from="352" to="371" />
+			<date type="published" when="1990" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Outgassing from Amazonian rivers and wetlands as a large tropical source of atmospheric CO 2</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><forename type="middle">E</forename><surname>Richey</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><forename type="middle">M</forename><surname>Melack</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">A</forename><forename type="middle">K</forename><surname>Aufdenkampe</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">V</forename><forename type="middle">M</forename><surname>Ballester</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">L</forename><forename type="middle">L</forename><surname>Hess</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">416</biblScope>
+			<biblScope unit="page" from="617" to="619" />
+			<date type="published" when="2002" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct xml:id="b15">
+	<analytic>
+		<title level="a" type="main">The role of discharge in the ocean delivery of particulate organic carbon by small, mountainous river systems</title>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">R</forename><forename type="middle">A</forename><surname>Wheatcroft</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">M</forename><forename type="middle">A</forename><surname>Goni</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><forename type="middle">A</forename><surname>Hatten</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">G</forename><forename type="middle">B</forename><surname>Pasternack</surname></persName>
+		</author>
+		<author>
+			<persName xmlns="http://www.tei-c.org/ns/1.0"><forename type="first">J</forename><forename type="middle">A</forename><surname>Warrick</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Limnology &amp; Oceanography</title>
+		<imprint>
+			<biblScope unit="volume">55</biblScope>
+			<biblScope unit="page" from="161" to="171" />
+			<date type="published" when="2012" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>
