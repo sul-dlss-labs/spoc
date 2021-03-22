@@ -30,8 +30,8 @@ jobs:
         # See https://flake8.pycqa.org/en/latest/user/options.html
         flake8 . --count --show-source --statistics --max-line-length=127 --exclude=doc
     - name: Code formatting with black
-      run: |
-        python -m black --check src
+      run: black --check src
+    - name: Type checking with mypy
+      run: mypy src
     - name: Test with unittest
-      run: |
-        python3 setup.py test
+      run: python setup.py test
