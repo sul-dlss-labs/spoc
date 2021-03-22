@@ -33,7 +33,7 @@ async def get_paper_records(paper_id: str):
     ]
     if len(records) < 1:
         raise HTTPException(status_code=404, detail=f"{paper_id} not found")
-    return {"id": paper_id, "records": records.to_dict(orient='records')}
+    return {"id": paper_id, "records": records.to_dict(orient="records")}
 
 
 @app.get("/records/")
