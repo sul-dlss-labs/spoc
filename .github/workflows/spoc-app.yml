@@ -29,12 +29,10 @@ jobs:
         # stop the build if there are Python syntax errors or undefined names
         # Use the --select or --ignore flags to only check or ignore specific rules
         # See https://flake8.pycqa.org/en/latest/user/options.html#cmdoption-flake8-select
-        flake8 . --count --show-source --statistics --exclude=doc/
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        flake8 . --count --show-source --statistics --max-line-length=127 --exclude=doc
     - name: Code formatting with black
       run: |
-        python -m black src
-    - name: Test with pytest
+        python -m black --check src
+    - name: Test with unittest
       run: |
         python3 setup.py test
