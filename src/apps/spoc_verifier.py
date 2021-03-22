@@ -51,6 +51,4 @@ with geo_col:
     """
 
 with action_col:
-    components.html(action_template.render(status="select"),
-                    height=75,
-                    width=65)
+    components.html(action_template.render(status="select"), height=75, width=65)
