@@ -1,6 +1,6 @@
 from typing import Optional
 
-import pandas as pd
+import pandas as pd  # type: ignore
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
