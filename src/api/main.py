@@ -10,10 +10,11 @@ all_records = pd.read_json("data/species-records.json")
 
 class Record(BaseModel):
     paper_id: str
-    instance_id: str
+    species_id: str
     species: Optional[str] = None
     time: Optional[str] = None
     place: Optional[str] = None
+    div_enum: Optional[int] = None
 
 
 app = FastAPI()
@@ -36,13 +37,13 @@ async def get_paper_records(paper_id: str):
 
 
 @app.get("/records/")
-async def get_record(paper_id: str, instance_id: str):
+async def get_record(paper_id: str, species_id: str):
     record = all_records[
         all_records["Paper ID"].isin([paper_id])
-        & all_records["Instance ID"].isin([instance_id])
+        & all_records["Species ID"].isin([species_id])
     ]
     if len(record) < 1:
-        msg = f"Record for {paper_id} and species ID {instance_id} not found"
+        msg = f"Record for {paper_id} and species ID {species_id} not found"
         raise HTTPException(status_code=404, detail=msg)
     return record
 
@@ -54,9 +55,9 @@ async def update_record(record: Record):
 
 @app.delete("/records/")
 async def delete_record(record: Record):
-    return {"message": f"{record.paper_id} {record.instance_id} deleted"}
+    return {"message": f"{record.paper_id} {record.species_id} deleted"}
 
 
 @app.get("/")
 async def root():
-    return {"message": "SpOc Endpoint"}
+    return {"message": "SPOC Endpoint"}
