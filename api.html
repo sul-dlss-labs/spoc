@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. GROBID PDF-to-TEI XML Workflow &#8212; Stanford Species Occurrences</title>
+    <title>1. SPOC API &#8212; Stanford Species Occurrences</title>
     
   <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -54,8 +54,8 @@
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="1. SPOC API" href="api.html" />
-    <link rel="prev" title="1. Data Preparation for SPOC" href="data-prep.html" />
+    <link rel="next" title="1. Future SPOC Work" href="future.html" />
+    <link rel="prev" title="2. GROBID PDF-to-TEI XML Workflow" href="grobid-pdf.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -97,14 +97,14 @@
   Data and Model Prepreparation
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="data-prep.html">
    1. Data Preparation for SPOC
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="grobid-pdf.html">
    2. GROBID PDF-to-TEI XML Workflow
   </a>
  </li>
@@ -114,9 +114,9 @@
   FastAPI Endpoint
  </span>
 </p>
-<ul class="nav sidenav_l1">
- <li class="toctree-l1">
-  <a class="reference internal" href="api.html">
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    1. SPOC API
   </a>
  </li>
@@ -189,7 +189,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/grobid-pdf.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/api.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -209,7 +209,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/sul-dlss-labs/spoc/issues/new?title=Issue%20on%20page%20%2Fgrobid-pdf.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/sul-dlss-labs/spoc/issues/new?title=Issue%20on%20page%20%2Fapi.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -230,7 +230,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/sul-dlss-labs/spoc/main?urlpath=tree/docs/grobid-pdf.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/sul-dlss-labs/spoc/main?urlpath=tree/docs/api.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -255,26 +255,30 @@
         
               <div>
                 
-  <div class="section" id="grobid-pdf-to-tei-xml-workflow">
-<h1><span class="section-number">2. </span>GROBID PDF-to-TEI XML Workflow<a class="headerlink" href="#grobid-pdf-to-tei-xml-workflow" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="https://grobid.readthedocs.io/en/latest/">GROBID</a>, short for <em>GeneRation Of BIbliographic Data</em>, is a machine learning
-environment that takes raw documents like PDF and generates structured TEI XML files with full-text content and other
-related metadata.</p>
+  <div class="section" id="spoc-api">
+<h1><span class="section-number">1. </span>SPOC API<a class="headerlink" href="#spoc-api" title="Permalink to this headline">¶</a></h1>
+<p>The SPOC API updates the species occurrence dataframe used in the Streamlit SpOc Verifier application. The <a class="reference external" href="https://fastapi.tiangolo.com/">FastAPI</a> can be run from the root directory with:</p>
+<p><code class="docutils literal notranslate"><span class="pre">uvicorn</span> <span class="pre">src.api.main:app</span> <span class="pre">--reload</span> <span class="pre">--root-path</span> <span class="pre">src/api/</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">reload_ext</span> autoreload
 <span class="o">%</span><span class="k">autoreload</span> 2
 <span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">requests</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">bb6be14f2361</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">2</span><span class="n">ef02b9fba8f</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;reload_ext&#39;</span><span class="p">,</span> <span class="s1">&#39;autoreload&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;autoreload&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;inline&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="nn">/opt/hostedtoolcache/Python/3.9.2/x64/lib/python3.9/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">run_line_magic</span><span class="nt">(self, magic_name, line, _stack_depth)</span>
 <span class="g g-Whitespace">   </span><span class="mi">2342</span>                 <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;local_ns&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_local_scope</span><span class="p">(</span><span class="n">stack_depth</span><span class="p">)</span>
@@ -327,123 +331,326 @@ related metadata.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pathlib</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">datetime</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;../../grobid_client_python/&quot;</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">grobid_client</span> <span class="k">as</span> <span class="nn">grobid</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_records</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;../data/species-records.json&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">hopkins_pdfs</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/Users/jpnelson/Google Drive/Shared drives/SUL AI 2020-2021/Project - Species Occurrences/papers_pdf&quot;</span><span class="p">)</span>
-<span class="n">hopkins_tei</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/Users/jpnelson/Google Drive/Shared drives/SUL AI 2020-2021/Project - Species Occurrences/papers_tei&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">grobid</span><span class="o">.</span><span class="n">grobid_client</span><span class="p">(</span><span class="n">config_path</span><span class="o">=</span><span class="s2">&quot;./grobid_config.json&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_records</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GROBID server is up and running
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+Int64Index: 12148 entries, 0 to 12147
+Data columns (total 7 columns):
+ #   Column       Non-Null Count  Dtype 
+---  ------       --------------  ----- 
+ 0   Paper ID     12148 non-null  object
+ 1   Instance ID  12148 non-null  object
+ 2   Species      12148 non-null  object
+ 3   GBIF         12148 non-null  object
+ 4   Time         12148 non-null  object
+ 5   Place        12148 non-null  object
+ 6   div_enum     12148 non-null  int64 
+dtypes: int64(1), object(6)
+memory usage: 759.2+ KB
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pdf2tei</span><span class="p">(</span><span class="n">pdf_path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">,</span> <span class="n">tei_path</span><span class="p">:</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">):</span>
-    <span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2"> conversion of PDFs to TEI XML&quot;</span><span class="p">)</span>
-    <span class="n">client</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="s2">&quot;processFulltextDocument&quot;</span><span class="p">,</span> <span class="n">hopkins_pdfs</span><span class="o">.</span><span class="n">as_posix</span><span class="p">(),</span> <span class="n">output</span><span class="o">=</span><span class="n">hopkins_tei</span><span class="o">.</span><span class="n">as_posix</span><span class="p">(),</span> <span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-    <span class="n">end</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Finished at </span><span class="si">{</span><span class="n">end</span><span class="si">}</span><span class="s2"> total time </span><span class="si">{</span><span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">)</span><span class="o">.</span><span class="n">seconds</span> <span class="o">/</span> <span class="mf">60.</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pdf2tei</span><span class="p">(</span><span class="n">hopkins_pdfs</span><span class="p">,</span> <span class="n">hopkins_tei</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_records</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2021-02-19 23:20:57.303939 conversion of PDFs to TEI XML
-Finished at 2021-02-20 00:35:04.757670 total time 74.11666666666666
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Paper ID</th>
+      <th>Instance ID</th>
+      <th>Species</th>
+      <th>GBIF</th>
+      <th>Time</th>
+      <th>Place</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>fhl_2011_Brezicha_25959.tei.xml</td>
+      <td>urn:lsid:marinespecies.org:taxname:240762</td>
+      <td>Strongylocentrotus franciscanus</td>
+      <td>https://www.gbif.org/species/search?q=Strongyl...</td>
+      <td></td>
+      <td>Porter,Pacific Ocean,Friday Harbor,Salish Sea,...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>fhl_2011_Brezicha_25959.tei.xml</td>
+      <td>urn:lsid:marinespecies.org:taxname:431072</td>
+      <td>radius</td>
+      <td>https://www.gbif.org/species/search?q=radius&amp;q...</td>
+      <td></td>
+      <td>Porter,Pacific Ocean,Friday Harbor,Salish Sea,...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>fhl_2011_Brezicha_25959.tei.xml</td>
+      <td>urn:lsid:marinespecies.org:taxname:711954</td>
+      <td>Parastichopus californicus</td>
+      <td>https://www.gbif.org/species/search?q=Parastic...</td>
+      <td></td>
+      <td>Porter,Pacific Ocean,Friday Harbor,Salish Sea,...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>fhl_2011_Bockmon_26635.tei.xml</td>
+      <td>urn:lsid:marinespecies.org:taxname:112078</td>
+      <td>Ammonia</td>
+      <td>https://www.gbif.org/species/search?q=Ammonia&amp;...</td>
+      <td></td>
+      <td>San Juan Island,Friday Harbor,north end,North ...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>fhl_2011_Bockmon_26635.tei.xml</td>
+      <td>urn:lsid:marinespecies.org:taxname:112078</td>
+      <td>ammonia</td>
+      <td>https://www.gbif.org/species/search?q=ammonia&amp;...</td>
+      <td></td>
+      <td>San Juan Island,Friday Harbor,north end,North ...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">borked</span> <span class="o">=</span> <span class="n">all_records</span><span class="p">[</span><span class="n">all_records</span><span class="p">[</span><span class="s1">&#39;Paper ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;asdfs&#39;</span><span class="p">])]</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1724</span><span class="o">-</span><span class="mi">1262</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_records</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>462
-</pre></div>
-</div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Paper ID</th>
+      <th>Instance ID</th>
+      <th>Species</th>
+      <th>GBIF</th>
+      <th>Time</th>
+      <th>Place</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>10690</th>
+      <td>ucla_1975_ZimmermanRichard.tei.xml</td>
+      <td>urn:lsid:marinespecies.org:taxname:106994</td>
+      <td>Spirontocaris</td>
+      <td>https://www.gbif.org/species/search?q=Spironto...</td>
+      <td>1975-05-27</td>
+      <td>pacifica,The wash,Santa Catalina Island,Cove</td>
+    </tr>
+    <tr>
+      <th>3094</th>
+      <td>fhl_2014_McGowan_27210.tei.xml</td>
+      <td>urn:lsid:marinespecies.org:taxname:370041</td>
+      <td>Phyllospadix</td>
+      <td>https://www.gbif.org/species/search?q=Phyllosp...</td>
+      <td></td>
+      <td>San Juan Island,shoreline,Wahl,Cattle Point,Bu...</td>
+    </tr>
+    <tr>
+      <th>8634</th>
+      <td>hms_vd999tv5289.tei.xml</td>
+      <td>urn:lsid:marinespecies.org:taxname:279812</td>
+      <td>Atherinops affinis</td>
+      <td>https://www.gbif.org/species/search?q=Atherino...</td>
+      <td></td>
+      <td>Pajaro,PAJARO RIVER,view,Monterey Bay,Elkhorn,...</td>
+    </tr>
+    <tr>
+      <th>3976</th>
+      <td>hms_bn277dh2861.tei.xml</td>
+      <td>urn:lsid:marinespecies.org:taxname:138086</td>
+      <td>Chaetopleura</td>
+      <td>https://www.gbif.org/species/search?q=Chaetopl...</td>
+      <td></td>
+      <td>Bayne,green,Pacific Grove,tide,post,Division,h...</td>
+    </tr>
+    <tr>
+      <th>6799</th>
+      <td>hms_jw427gt5299.tei.xml</td>
+      <td>urn:lsid:marinespecies.org:taxname:137928</td>
+      <td>Elysia</td>
+      <td>https://www.gbif.org/species/search?q=Elysia&amp;q...</td>
+      <td>1988-06-06</td>
+      <td>Santa Barbara,Moss Landing Harbor,Pacific Grove</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">hopkins_pdfs</span><span class="o">.</span><span class="n">iterdir</span><span class="p">())</span>
-    
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">missing</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">hopkins_pdfs</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
-    <span class="n">xml_tei</span> <span class="o">=</span> <span class="n">hopkins_tei</span><span class="o">/</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">row</span><span class="o">.</span><span class="n">stem</span><span class="si">}</span><span class="s2">.tei.xml&quot;</span>
-    <span class="k">if</span> <span class="ow">not</span> <span class="n">xml_tei</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
-        <span class="n">missing</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">missing</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_records</span><span class="p">[</span><span class="n">all_records</span><span class="p">[</span><span class="s1">&#39;Paper ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;carl_1983_OlanderAndrea.tei.xml&#39;</span><span class="p">])</span> <span class="o">&amp;</span> <span class="n">all_records</span><span class="p">[</span><span class="s1">&#39;Instance ID&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">&#39;urn:lsid:marinespecies.org:taxname:269761&#39;</span><span class="p">])]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>462
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Paper ID</th>
+      <th>Instance ID</th>
+      <th>Species</th>
+      <th>GBIF</th>
+      <th>Time</th>
+      <th>Place</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>10360</th>
+      <td>carl_1983_OlanderAndrea.tei.xml</td>
+      <td>urn:lsid:marinespecies.org:taxname:269761</td>
+      <td>Lythrypnus</td>
+      <td>https://www.gbif.org/species/search?q=Lythrypn...</td>
+      <td></td>
+      <td>Santa Barbara Island,Santa Barbara,white,Turne...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="s2">&quot;http://localhost:8000/records/&quot;</span><span class="p">,</span>
+                     <span class="n">data</span><span class="o">=</span><span class="p">{</span> <span class="s1">&#39;paper_id&#39;</span><span class="p">:</span> <span class="s1">&#39;fhl_2014_Sullivan_27302.tei.xml&#39;</span><span class="p">,</span> 
+                           <span class="s1">&#39;instance_id&#39;</span><span class="p">:</span> <span class="s1">&#39;urn:lsid:marinespecies.org:taxname:6&#39;</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">missing</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="o">.</span><span class="n">text</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PosixPath(&#39;/Users/jpnelson/Google Drive/Shared drives/SUL AI 2020-2021/Project - Species Occurrences/papers_pdf/fhl_2011_Broell_19896.pdf&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;{&quot;detail&quot;:[{&quot;loc&quot;:[&quot;body&quot;,0],&quot;msg&quot;:&quot;Expecting value: line 1 column 1 (char 0)&quot;,&quot;type&quot;:&quot;value_error.jsondecode&quot;,&quot;ctx&quot;:{&quot;msg&quot;:&quot;Expecting value&quot;,&quot;doc&quot;:&quot;paper_id=fhl_2014_Sullivan_27302.tei.xml&amp;instance_id=urn%3Alsid%3Amarinespecies.org%3Ataxname%3A6&quot;,&quot;pos&quot;:0,&quot;lineno&quot;:1,&quot;colno&quot;:1}}]}&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">missing</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">all_records</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PosixPath(&#39;/Users/jpnelson/Google Drive/Shared drives/SUL AI 2020-2021/Project - Species Occurrences/papers_pdf/osu_20200612144428207.pdf&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;Paper ID&#39;: &#39;hms_mj526dg0556.tei.xml&#39;,
+  &#39;Instance ID&#39;: &#39;urn:lsid:marinespecies.org:taxname:249634&#39;,
+  &#39;Species&#39;: &#39;glandula&#39;,
+  &#39;GBIF&#39;: &#39;https://www.gbif.org/species/search?q=glandula&amp;qField=SCIENTIFIC&#39;,
+  &#39;Time&#39;: &#39;&#39;,
+  &#39;Place&#39;: &#39;&#39;,
+  &#39;div_enum&#39;: 5},
+ {&#39;Paper ID&#39;: &#39;fhl_2014_McMahon_34528.tei.xml&#39;,
+  &#39;Instance ID&#39;: &#39;urn:lsid:marinespecies.org:taxname:395240&#39;,
+  &#39;Species&#39;: &#39;concholepas&#39;,
+  &#39;GBIF&#39;: &#39;https://www.gbif.org/species/search?q=concholepas&amp;qField=SCIENTIFIC&#39;,
+  &#39;Time&#39;: &#39;&#39;,
+  &#39;Place&#39;: &#39;Talmage,Anlauf,Blanchard,Taylor,Marshall,Ross,Pacific,bivalve,Davis&#39;,
+  &#39;div_enum&#39;: 1},
+ {&#39;Paper ID&#39;: &#39;fhl_2011_Pierce_26647.tei.xml&#39;,
+  &#39;Instance ID&#39;: &#39;urn:lsid:marinespecies.org:taxname:325914&#39;,
+  &#39;Species&#39;: &#39;Mus&#39;,
+  &#39;GBIF&#39;: &#39;https://www.gbif.org/species/search?q=Mus&amp;qField=SCIENTIFIC&#39;,
+  &#39;Time&#39;: &#39;&#39;,
+  &#39;Place&#39;: &#39;view,cascade,University&#39;,
+  &#39;div_enum&#39;: 2},
+ {&#39;Paper ID&#39;: &#39;ucla_1978_SkollerDebbie_EnvComplexity.tei.xml&#39;,
+  &#39;Instance ID&#39;: &#39;urn:lsid:marinespecies.org:taxname:402317&#39;,
+  &#39;Species&#39;: &#39;Hypsypops rubicunda&#39;,
+  &#39;GBIF&#39;: &#39;https://www.gbif.org/species/search?q=Hypsypops rubicunda&amp;qField=SCIENTIFIC&#39;,
+  &#39;Time&#39;: &#39;1978-05-05&#39;,
+  &#39;Place&#39;: &#39;tide&#39;,
+  &#39;div_enum&#39;: 4},
+ {&#39;Paper ID&#39;: &#39;hms_ms463wm9540.tei.xml&#39;,
+  &#39;Instance ID&#39;: &#39;urn:lsid:marinespecies.org:taxname:106122&#39;,
+  &#39;Species&#39;: &#39;Balanus&#39;,
+  &#39;GBIF&#39;: &#39;https://www.gbif.org/species/search?q=Balanus&amp;qField=SCIENTIFIC&#39;,
+  &#39;Time&#39;: &#39;&#39;,
+  &#39;Place&#39;: &#39;Hopkins Marine Life Refuge,Pacific Grove&#39;,
+  &#39;div_enum&#39;: 2}]
 </pre></div>
 </div>
 </div>
@@ -475,8 +682,8 @@ Finished at 2021-02-20 00:35:04.757670 total time 74.11666666666666
         
         <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="data-prep.html" title="previous page"><span class="section-number">1. </span>Data Preparation for SPOC</a>
-    <a class='right-next' id="next-link" href="api.html" title="next page"><span class="section-number">1. </span>SPOC API</a>
+    <a class='left-prev' id="prev-link" href="grobid-pdf.html" title="previous page"><span class="section-number">2. </span>GROBID PDF-to-TEI XML Workflow</a>
+    <a class='right-next' id="next-link" href="future.html" title="next page"><span class="section-number">1. </span>Future SPOC Work</a>
 
         </div>
         
