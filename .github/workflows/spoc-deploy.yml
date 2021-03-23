@@ -1,0 +1,31 @@
+name: Deploy to AWS EC2
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  AWS_EC2_PRIVATE_KEY: ${{secrets.AWS_EC2_PRIVATE_KEY}}
+  AWS_EC2_HOST: ${{secrets.AWS_EC2_HOST}}
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  deploy:
+    name: EC2 Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up private key on runner
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$AWS_EC2_PRIVATE_KEY" > ~/.ssh/private.key
+          chmod 400 ~/.ssh/private.key
+          ssh-keyscan -H $AWS_EC2_HOST > ~/.ssh/known_hosts
+      - name: Login to EC2 server and run deploy script
+        run: |
+          ssh -i ~/.ssh/private.key ubuntu@"$AWS_EC2_HOST" .spoc/deploy.sh
