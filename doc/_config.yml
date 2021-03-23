@@ -4,7 +4,7 @@
 title: Stanford Species Occurrences
 author: Jeremy Nelson, Nicole Coleman, Amanda Whitmire, Josh Greben, Jessica Cebra
 copyright: "2021"
-logo: logo.png
+logo: SUL_AI_SPOC.png
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
