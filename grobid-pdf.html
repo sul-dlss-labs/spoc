@@ -247,6 +247,26 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i>
+            Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#running-grobid-as-a-docker-container">
+   2.1. Running GROBID as a Docker Container
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup-for-running">
+   2.2. Setup for Running
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
         </div>
     </div>
 </div>
@@ -260,6 +280,13 @@
 <p><a class="reference external" href="https://grobid.readthedocs.io/en/latest/">GROBID</a>, short for <em>GeneRation Of BIbliographic Data</em>, is a machine learning
 environment that takes raw documents like PDF and generates structured TEI XML files with full-text content and other
 related metadata.</p>
+<div class="section" id="running-grobid-as-a-docker-container">
+<h2><span class="section-number">2.1. </span>Running GROBID as a Docker Container<a class="headerlink" href="#running-grobid-as-a-docker-container" title="Permalink to this headline">¶</a></h2>
+<p>The easiest method to run GROBID is with Docker using the lightweight CSR image.</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-t</span> <span class="pre">--rm</span> <span class="pre">--init</span> <span class="pre">-p</span> <span class="pre">8070:8070</span> <span class="pre">-p</span> <span class="pre">8071:8071</span> <span class="pre">lfoppiano/grobid:0.6.1</span></code></p>
+</div>
+<div class="section" id="setup-for-running">
+<h2><span class="section-number">2.2. </span>Setup for Running<a class="headerlink" href="#setup-for-running" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">reload_ext</span> autoreload
@@ -330,7 +357,9 @@ related metadata.</p>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pathlib</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;../../grobid_client_python/&quot;</span><span class="p">)</span>
+<span class="c1"># Assumes that the grobid Python Client (https://github.com/kermitt2/grobid_client_python) has </span>
+<span class="c1"># been cloned in the same directory as SPOC</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;../../grobid_client_python/&quot;</span><span class="p">)</span> 
 <span class="kn">import</span> <span class="nn">grobid_client</span> <span class="k">as</span> <span class="nn">grobid</span>
 </pre></div>
 </div>
@@ -346,7 +375,7 @@ related metadata.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">grobid</span><span class="o">.</span><span class="n">grobid_client</span><span class="p">(</span><span class="n">config_path</span><span class="o">=</span><span class="s2">&quot;./grobid_config.json&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">grobid</span><span class="o">.</span><span class="n">grobid_client</span><span class="p">(</span><span class="n">config_path</span><span class="o">=</span><span class="s2">&quot;../config/grobid.json&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -375,8 +404,8 @@ related metadata.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2021-02-19 23:20:57.303939 conversion of PDFs to TEI XML
-Finished at 2021-02-20 00:35:04.757670 total time 74.11666666666666
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2021-03-02 18:54:39.406047 conversion of PDFs to TEI XML
+Finished at 2021-03-02 19:16:35.501890 total time 21.933333333333334
 </pre></div>
 </div>
 </div>
@@ -389,14 +418,6 @@ Finished at 2021-02-20 00:35:04.757670 total time 74.11666666666666
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>462
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">hopkins_pdfs</span><span class="o">.</span><span class="n">iterdir</span><span class="p">())</span>
-    
 </pre></div>
 </div>
 </div>
@@ -419,7 +440,7 @@ Finished at 2021-02-20 00:35:04.757670 total time 74.11666666666666
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>462
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>88
 </pre></div>
 </div>
 </div>
@@ -438,13 +459,108 @@ Finished at 2021-02-20 00:35:04.757670 total time 74.11666666666666
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">missing</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">missing_filenames</span> <span class="o">=</span> <span class="p">[</span><span class="n">r</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">missing</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sorted</span><span class="p">(</span><span class="n">missing_filenames</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>PosixPath(&#39;/Users/jpnelson/Google Drive/Shared drives/SUL AI 2020-2021/Project - Species Occurrences/papers_pdf/osu_20200612144428207.pdf&#39;)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;bml_Covello 2011_Summer Seq Three.pdf&#39;,
+ &#39;carl_1986_SpringIndex.pdf&#39;,
+ &#39;fhl_2011_Blackstone_19866.pdf&#39;,
+ &#39;fhl_2011_Bockmon_19854.pdf&#39;,
+ &#39;fhl_2011_Boeck_19878.pdf&#39;,
+ &#39;fhl_2011_Bourdillon_19873.pdf&#39;,
+ &#39;fhl_2011_Brezicha_19888.pdf&#39;,
+ &#39;fhl_2011_Broell_19896.pdf&#39;,
+ &#39;fhl_2011_Challener_19855.pdf&#39;,
+ &#39;fhl_2011_Cox_19895.pdf&#39;,
+ &#39;fhl_2011_Enzor_19864.pdf&#39;,
+ &#39;fhl_2011_Ewings_19889.pdf&#39;,
+ &#39;fhl_2011_Follis_19879.pdf&#39;,
+ &#39;fhl_2011_Gilmore_19862.pdf&#39;,
+ &#39;fhl_2011_Gordon_19881.pdf&#39;,
+ &#39;fhl_2011_Guenther_19863.pdf&#39;,
+ &#39;fhl_2011_Ho_19837.pdf&#39;,
+ &#39;fhl_2011_Hoang_19874.pdf&#39;,
+ &#39;fhl_2011_Johnson_19836.pdf&#39;,
+ &#39;fhl_2011_Johnson_19872.pdf&#39;,
+ &#39;fhl_2011_Kane_19884.pdf&#39;,
+ &#39;fhl_2011_Kapsenburg_19859.pdf&#39;,
+ &#39;fhl_2011_Kim_19880.pdf&#39;,
+ &#39;fhl_2011_Krauszer_19843.pdf&#39;,
+ &#39;fhl_2011_Lee_19883.pdf&#39;,
+ &#39;fhl_2011_Little_19825.pdf&#39;,
+ &#39;fhl_2011_Lucas_19894.pdf&#39;,
+ &#39;fhl_2011_Magley_19824.pdf&#39;,
+ &#39;fhl_2011_Meyer_19867.pdf&#39;,
+ &#39;fhl_2011_Møller_19891.pdf&#39;,
+ &#39;fhl_2011_Navratil_19826.pdf&#39;,
+ &#39;fhl_2011_Navratil_19868.pdf&#39;,
+ &#39;fhl_2011_Newcomb_19860.pdf&#39;,
+ &#39;fhl_2011_Olmstead_19845.pdf&#39;,
+ &#39;fhl_2011_Paxton_19890.pdf&#39;,
+ &#39;fhl_2011_Phillips_19858.pdf&#39;,
+ &#39;fhl_2011_Pietsch_19856.pdf&#39;,
+ &#39;fhl_2011_Rickards_19861.pdf&#39;,
+ &#39;fhl_2011_Shaffer_19877.pdf&#39;,
+ &#39;fhl_2011_Singer_19887.pdf&#39;,
+ &#39;fhl_2011_Smith_19886.pdf&#39;,
+ &#39;fhl_2011_Stelter_19835.pdf&#39;,
+ &#39;fhl_2011_Suzumura_19844.pdf&#39;,
+ &#39;fhl_2011_Taylor_19892.pdf&#39;,
+ &#39;fhl_2011_Thomas_19869.pdf&#39;,
+ &#39;fhl_2011_Ulmke_19875.pdf&#39;,
+ &#39;fhl_2011_Vancil_19876.pdf&#39;,
+ &#39;fhl_2011_Vaughn_19857.pdf&#39;,
+ &#39;fhl_2011_Walls_19870.pdf&#39;,
+ &#39;fhl_2011_Wilkins_19865.pdf&#39;,
+ &#39;fhl_2011_Witt_19885.pdf&#39;,
+ &#39;fhl_2011_Witt_25966.pdf&#39;,
+ &#39;fhl_2011_van’t Hul_19871.pdf&#39;,
+ &#39;fhl_2012_Albrecht_19808.pdf&#39;,
+ &#39;fhl_2012_Bruders_19793.pdf&#39;,
+ &#39;fhl_2012_Churches_19794.pdf&#39;,
+ &#39;fhl_2012_Conery_19809.pdf&#39;,
+ &#39;fhl_2012_Davies_19801.pdf&#39;,
+ &#39;fhl_2012_Dunnell_19802.pdf&#39;,
+ &#39;fhl_2012_Fodor_19795.pdf&#39;,
+ &#39;fhl_2012_Ge_19803.pdf&#39;,
+ &#39;fhl_2012_Girardo_19796.pdf&#39;,
+ &#39;fhl_2012_Jacobsen-Watts_19811.pdf&#39;,
+ &#39;fhl_2012_Kareiva_19797.pdf&#39;,
+ &#39;fhl_2012_Kreis_19812.pdf&#39;,
+ &#39;fhl_2012_Kulesza_19813.pdf&#39;,
+ &#39;fhl_2012_Marks_19804.pdf&#39;,
+ &#39;fhl_2012_Oxborrow_19814.pdf&#39;,
+ &#39;fhl_2012_Sanford_19798.pdf&#39;,
+ &#39;fhl_2012_Schreck_19805.pdf&#39;,
+ &#39;fhl_2012_Stull_19815.pdf&#39;,
+ &#39;fhl_2012_Swore_19799.pdf&#39;,
+ &#39;fhl_2012_Townsend_19806.pdf&#39;,
+ &#39;fhl_2012_Twomey_19807.pdf&#39;,
+ &#39;fhl_2012_Voon_19816.pdf&#39;,
+ &#39;fhl_2012_Wang_19817.pdf&#39;,
+ &#39;osu_20200612152001862.pdf&#39;,
+ &#39;osu_20200612152044760.pdf&#39;,
+ &#39;osu_20200612152132332.pdf&#39;,
+ &#39;osu_20200612152240497.pdf&#39;,
+ &#39;osu_20200612152633039.pdf&#39;,
+ &#39;osu_20200612152822066.pdf&#39;,
+ &#39;osu_20200612153112738.pdf&#39;,
+ &#39;osu_20200612153337143.pdf&#39;,
+ &#39;osu_20200612153509246.pdf&#39;,
+ &#39;osu_20200612153616194.pdf&#39;,
+ &#39;osu_20200612153848020.pdf&#39;,
+ &#39;osu_20200612154034430.pdf&#39;]
 </pre></div>
+</div>
 </div>
 </div>
 </div>

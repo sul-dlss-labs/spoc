@@ -254,14 +254,47 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#extracting-full-text-from-tei-xml">
+   1.1. Extracting Full-Text from TEI XML
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#worms-marine-species-dataframe">
-   1.1. WorMS Marine Species Dataframe
+   1.2. WorMS Marine Species Dataframe
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#location-dataframe">
-   1.2. Location Dataframe
+   1.3. Location DataFrame
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#habitat-dataframe">
+   1.4. Habitat DataFrame
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#load-helper-functions-from-lib-etl-py-module">
+   1.5. Load helper functions from
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     lib/etl.py
+    </span>
+   </code>
+   module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#construct-spacy-pipeline">
+   1.6. Construct spaCy Pipeline
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#species-locations-and-habitat-entity-pipeline-factories">
+     1.6.1. Species, Locations, and Habitat Entity pipeline factories
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -279,26 +312,310 @@
 <h1><span class="section-number">1. </span>Data Preparation for SPOC<a class="headerlink" href="#data-preparation-for-spoc" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">papers</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;../data/papers.json&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">reload_ext</span> autoreload
+<span class="o">%</span><span class="k">autoreload</span> 2
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">import</span> <span class="nn">pathlib</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">lxml</span> <span class="kn">import</span> <span class="n">etree</span>
+<span class="kn">import</span> <span class="nn">spacy</span>
+<span class="kn">from</span> <span class="nn">spacy_lookup</span> <span class="kn">import</span> <span class="n">Entity</span>
+<span class="n">papers_tei</span> <span class="o">=</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="s2">&quot;/Google Drive/Shared drives/SUL AI 2020-2021/Project - Species Occurrences/papers_tei&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="n">d6dfa0a350d9</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">papers</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s2">&quot;../data/papers.json&quot;</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">1</span><span class="o">-</span><span class="mi">34</span><span class="n">de32e97c1c</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;reload_ext&#39;</span><span class="p">,</span> <span class="s1">&#39;autoreload&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;autoreload&#39;</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;inline&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">datetime</span>
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+<span class="nn">/opt/hostedtoolcache/Python/3.9.2/x64/lib/python3.9/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">run_line_magic</span><span class="nt">(self, magic_name, line, _stack_depth)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2342</span>                 <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;local_ns&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_local_scope</span><span class="p">(</span><span class="n">stack_depth</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2343</span>             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2344</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2345</span>             <span class="k">return</span> <span class="n">result</span>
+<span class="g g-Whitespace">   </span><span class="mi">2346</span> 
+
+<span class="nn">&lt;decorator-gen-101&gt;</span> in <span class="ni">matplotlib</span><span class="nt">(self, line)</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.9.2/x64/lib/python3.9/site-packages/IPython/core/magic.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(f, *a, **k)</span>
+<span class="g g-Whitespace">    </span><span class="mi">185</span>     <span class="c1"># but it&#39;s overkill for just that one bit of state.</span>
+<span class="g g-Whitespace">    </span><span class="mi">186</span>     <span class="k">def</span> <span class="nf">magic_deco</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">187</span>         <span class="n">call</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">188</span> 
+<span class="g g-Whitespace">    </span><span class="mi">189</span>         <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.9.2/x64/lib/python3.9/site-packages/IPython/core/magics/pylab.py</span> in <span class="ni">matplotlib</span><span class="nt">(self, line)</span>
+<span class="g g-Whitespace">     </span><span class="mi">97</span>             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Available matplotlib backends: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">backends_list</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">98</span>         <span class="k">else</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">99</span>             <span class="n">gui</span><span class="p">,</span> <span class="n">backend</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">enable_matplotlib</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">gui</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">gui</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">args</span><span class="o">.</span><span class="n">gui</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">100</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_show_matplotlib_backend</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">gui</span><span class="p">,</span> <span class="n">backend</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">101</span> 
+
+<span class="nn">/opt/hostedtoolcache/Python/3.9.2/x64/lib/python3.9/site-packages/ipykernel/zmqshell.py</span> in <span class="ni">enable_matplotlib</span><span class="nt">(self, gui)</span>
+<span class="g g-Whitespace">    </span><span class="mi">599</span> 
+<span class="g g-Whitespace">    </span><span class="mi">600</span>     <span class="k">def</span> <span class="nf">enable_matplotlib</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">601</span>         <span class="n">gui</span><span class="p">,</span> <span class="n">backend</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">ZMQInteractiveShell</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">enable_matplotlib</span><span class="p">(</span><span class="n">gui</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">602</span> 
+<span class="g g-Whitespace">    </span><span class="mi">603</span>         <span class="kn">from</span> <span class="nn">ipykernel.pylab.backend_inline</span> <span class="kn">import</span> <span class="n">configure_inline_support</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.9.2/x64/lib/python3.9/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">enable_matplotlib</span><span class="nt">(self, gui)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3511</span>         <span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">3512</span><span class="sd">         from IPython.core import pylabtools as pt</span>
+<span class="ne">-&gt; </span><span class="mi">3513</span><span class="sd">         gui, backend = pt.find_gui_and_backend(gui, self.pylab_gui_select)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3514</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">3515</span><span class="sd">         if gui != &#39;inline&#39;:</span>
+
+<span class="nn">/opt/hostedtoolcache/Python/3.9.2/x64/lib/python3.9/site-packages/IPython/core/pylabtools.py</span> in <span class="ni">find_gui_and_backend</span><span class="nt">(gui, gui_select)</span>
+<span class="g g-Whitespace">    </span><span class="mi">278</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">279</span> 
+<span class="ne">--&gt; </span><span class="mi">280</span>     <span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="g g-Whitespace">    </span><span class="mi">281</span> 
+<span class="g g-Whitespace">    </span><span class="mi">282</span>     <span class="k">if</span> <span class="n">gui</span> <span class="ow">and</span> <span class="n">gui</span> <span class="o">!=</span> <span class="s1">&#39;auto&#39;</span><span class="p">:</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="extracting-full-text-from-tei-xml">
+<h2><span class="section-number">1.1. </span>Extracting Full-Text from TEI XML<a class="headerlink" href="#extracting-full-text-from-tei-xml" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://grobid.readthedocs.io/en/latest/">GROBID</a> extracts the full-text from the PDFs and saves the result in a
+<a class="reference external" href="https://tei-c.org/">TEI</a> XML document.</p>
+</div>
+<div class="section" id="worms-marine-species-dataframe">
+<h2><span class="section-number">1.2. </span>WorMS Marine Species Dataframe<a class="headerlink" href="#worms-marine-species-dataframe" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">taxon</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/jpnelson/Google Drive/Shared drives/SUL AI 2020-2021/Project - Species Occurrences/WoRMS_marineSpecies/taxon.txt&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">papers</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">species</span> <span class="o">=</span> <span class="n">taxon</span><span class="p">[[</span><span class="s1">&#39;taxonID&#39;</span><span class="p">,</span> <span class="s1">&#39;scientificName&#39;</span><span class="p">,</span> <span class="s1">&#39;references&#39;</span><span class="p">]]</span>
+<span class="n">species</span> <span class="o">=</span> <span class="n">species</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;references&quot;</span><span class="p">:</span> <span class="s2">&quot;URL&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">species</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s2">&quot;../data/species.json&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="location-dataframe">
+<h2><span class="section-number">1.3. </span>Location DataFrame<a class="headerlink" href="#location-dataframe" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ca_locations</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/jpnelson/Google Drive/Shared drives/SUL AI 2020-2021/Project - Species Occurrences/data/NamedPlaces_CA.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">or_locations</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/jpnelson/Google Drive/Shared drives/SUL AI 2020-2021/Project - Species Occurrences/data/NamedPlaces_OR.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">wa_locations</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;/Users/jpnelson/Google Drive/Shared drives/SUL AI 2020-2021/Project - Species Occurrences/data/NamedPlaces_WA.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">locations</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">ca_locations</span><span class="p">,</span> <span class="n">or_locations</span><span class="p">,</span> <span class="n">wa_locations</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">locations</span> <span class="o">=</span> <span class="n">locations</span><span class="p">[[</span><span class="s1">&#39;FEATURE_ID&#39;</span><span class="p">,</span> <span class="s1">&#39;FEATURE_NAME&#39;</span><span class="p">,</span> <span class="s1">&#39;STATE_ALPHA&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIM_LONG_DEC&#39;</span><span class="p">,</span> <span class="s1">&#39;PRIM_LAT_DEC&#39;</span><span class="p">]]</span>
+<span class="n">locations</span> <span class="o">=</span> <span class="n">locations</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;STATE_ALPHA&#39;</span><span class="p">:</span> <span class="s1">&#39;STATE&#39;</span><span class="p">,</span> 
+                                      <span class="s1">&#39;PRIM_LONG_DEC&#39;</span><span class="p">:</span> <span class="s1">&#39;LONGITUDE&#39;</span><span class="p">,</span> 
+                                      <span class="s1">&#39;PRIM_LAT_DEC&#39;</span><span class="p">:</span> <span class="s1">&#39;LATITUDE&#39;</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">locations</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s2">&quot;../data/locations.json&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="habitat-dataframe">
+<h2><span class="section-number">1.4. </span>Habitat DataFrame<a class="headerlink" href="#habitat-dataframe" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="n">habitats</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/Users/jpnelson/Google Drive/Shared drives/SUL AI 2020-2021/Project - Species Occurrences/data/habitats.jsonl&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fo</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">fo</span><span class="o">.</span><span class="n">readlines</span><span class="p">():</span>
+        <span class="n">line</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+        <span class="n">habitats</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;pattern&#39;</span><span class="p">))</span>
+<span class="n">habitats</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">habitats</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Habitat&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">habitats</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s2">&quot;../data/habitats.json&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="load-helper-functions-from-lib-etl-py-module">
+<h2><span class="section-number">1.5. </span>Load helper functions from <code class="docutils literal notranslate"><span class="pre">lib/etl.py</span></code> module<a class="headerlink" href="#load-helper-functions-from-lib-etl-py-module" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;../src&quot;</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">lib.etl</span> <span class="k">as</span> <span class="nn">etl</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Uncomment these lines to load dataframes if you haven&#39;t generated the dataframes above</span>
+<span class="c1">#species = pd.read_json(&#39;../data/species.json&#39;)</span>
+<span class="c1">#locations = pd.read_json(&#39;../data/locations.json&#39;)</span>
+<span class="c1">#habitats = pd.read_json(&#39;../data/habitats.json&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">species_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">species</span><span class="o">.</span><span class="n">taxonID</span><span class="p">,</span> <span class="n">species</span><span class="o">.</span><span class="n">scientificName</span><span class="p">))</span>
+<span class="n">location_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">locations</span><span class="o">.</span><span class="n">FEATURE_ID</span><span class="p">,</span> <span class="n">locations</span><span class="o">.</span><span class="n">FEATURE_NAME</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="construct-spacy-pipeline">
+<h2><span class="section-number">1.6. </span>Construct spaCy Pipeline<a class="headerlink" href="#construct-spacy-pipeline" title="Permalink to this headline">¶</a></h2>
+<p>Create a spaCy nlp pipeline from the existing <a class="reference external" href="https://spacy.io/models/en#en_core_web_md">en_core_web_md</a> English pipeline .</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Iterate through species and location dictionary to turn values into lists</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">species_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">species_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">val</span><span class="p">,]</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">location_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">location_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">val</span><span class="p">,]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="species-locations-and-habitat-entity-pipeline-factories">
+<h3><span class="section-number">1.6.1. </span>Species, Locations, and Habitat Entity pipeline factories<a class="headerlink" href="#species-locations-and-habitat-entity-pipeline-factories" title="Permalink to this headline">¶</a></h3>
+<p>This uses a forked version of <a class="reference external" href="https://github.com/sul-dlss-labs/spacy-lookup">spacey lookup</a> that has been refactored to use spaCy 3.0.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">spacy.language</span> <span class="kn">import</span> <span class="n">Language</span>
+
+<span class="nd">@Language</span><span class="o">.</span><span class="n">factory</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;species_entity&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">create_species_entity</span><span class="p">(</span><span class="n">nlp</span><span class="p">:</span> <span class="n">Language</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Entity</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">keywords_dict</span><span class="o">=</span><span class="n">species_dict</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;SPECIES&#39;</span><span class="p">)</span>
+
+<span class="nd">@Language</span><span class="o">.</span><span class="n">factory</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;location_entity&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">create_location_entity</span><span class="p">(</span><span class="n">nlp</span><span class="p">:</span> <span class="n">Language</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Entity</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">keywords_dict</span><span class="o">=</span><span class="n">location_dict</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;LOCATION&#39;</span><span class="p">)</span>
+
+<span class="nd">@Language</span><span class="o">.</span><span class="n">factory</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;habitat_entity&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">create_habitat_entity</span><span class="p">(</span><span class="n">nlp</span><span class="p">:</span> <span class="n">Language</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">Entity</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="n">keywords_list</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">habitats</span><span class="o">.</span><span class="n">Habitat</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;HABITAT&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nlp</span> <span class="o">=</span> <span class="n">spacy</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;en_core_web_md&#39;</span><span class="p">)</span>
+<span class="n">nlp</span><span class="o">.</span><span class="n">add_pipe</span><span class="p">(</span><span class="s1">&#39;species_entity&#39;</span><span class="p">)</span>
+<span class="n">nlp</span><span class="o">.</span><span class="n">add_pipe</span><span class="p">(</span><span class="s1">&#39;location_entity&#39;</span><span class="p">)</span>
+<span class="n">nlp</span><span class="o">.</span><span class="n">add_pipe</span><span class="p">(</span><span class="s1">&#39;habitat_entity&#39;</span><span class="p">)</span>
+<span class="n">nlp</span><span class="o">.</span><span class="n">remove_pipe</span><span class="p">(</span><span class="s2">&quot;ner&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;ner&#39;, &lt;spacy.pipeline.ner.EntityRecognizer at 0x7ff8f6a55e20&gt;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
+<span class="n">all_records</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Start conversion at </span><span class="si">{</span><span class="n">start</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">tei_path</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">papers_tei</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">records</span> <span class="o">=</span> <span class="n">etl</span><span class="o">.</span><span class="n">process_xml</span><span class="p">(</span><span class="n">tei_path</span><span class="o">.</span><span class="n">read_bytes</span><span class="p">(),</span> <span class="n">tei_path</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">nlp</span><span class="p">)</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error with </span><span class="si">{</span><span class="n">tei_path</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tei_path</span><span class="p">)</span>
+        <span class="k">continue</span>
+    <span class="k">if</span> <span class="n">all_records</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">all_records</span> <span class="o">=</span> <span class="n">records</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">all_records</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">all_records</span><span class="p">,</span> <span class="n">records</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span><span class="o">%</span><span class="k">10</span> and i &gt; 0:
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">i</span><span class="o">%</span><span class="k">25</span> and i &gt; 0:
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">utcnow</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Finished at </span><span class="si">{</span><span class="n">end</span><span class="si">}</span><span class="s2">, total time </span><span class="si">{</span><span class="p">(</span><span class="n">end</span><span class="o">-</span><span class="n">start</span><span class="p">)</span><span class="o">.</span><span class="n">seconds</span> <span class="o">/</span> <span class="mf">60.</span><span class="si">}</span><span class="s2"> minutes. Total errors </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Start conversion at 2021-03-22 19:46:52.720431
+..25...50..75...100..125...150..175...200..225...250..275...300..325...350..375...400..425...450..475...500..525...550..575...600..625...650..675...700..725...750..775...800..825...850..875...900..925...950..975...1000..1025...1050..1075...1100..1125...1150..1175...1200..1225...1250..1275...1300..1325...1350..1375...1400..1425...1450..1475...1500..1525...1550..1575...1600..1625.Finished at 2021-03-22 19:51:58.256269, total time 5.083333333333333 minutes. Total errors 0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_records</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(12151, 8)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_records</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -321,71 +638,71 @@
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Author</th>
-      <th>Secondary Author</th>
-      <th>Year</th>
-      <th>Title</th>
-      <th>Keywords</th>
-      <th>Abstract</th>
-      <th>Institution</th>
-      <th>status</th>
+      <th>Paper ID</th>
+      <th>Instance ID</th>
+      <th>Species</th>
+      <th>GBIF</th>
+      <th>Time</th>
+      <th>Place</th>
+      <th>Habitats</th>
+      <th>div_enum</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>Berrie, Warren R.</td>
-      <td>Devereaux, Mitchel W.</td>
-      <td>1963</td>
-      <td>Identification and location of carbohydrases i...</td>
-      <td>black turban snail, Tegula</td>
-      <td>Carbohydrate digestion in the snail Tegula fun...</td>
-      <td>Hopkins</td>
-      <td>NaN</td>
+      <td>fhl_2011_Brezicha_25959.tei.xml</td>
+      <td>urn:lsid:marinespecies.org:taxname:240762</td>
+      <td>Strongylocentrotus franciscanus</td>
+      <td>https://www.gbif.org/species/search?q=Strongyl...</td>
+      <td>2011-12-09</td>
+      <td>[(1505051, Friday Harbor), (1508076, San Juan ...</td>
+      <td>[sub-tidal, close to shore, river, tree]</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Best, Barbara A.</td>
-      <td>None</td>
-      <td>1963</td>
-      <td>Feeding activities of Tegula funebralis</td>
-      <td>black turban snail, Tegula</td>
-      <td>1. Tegula funebrals will ingest nearly any alg...</td>
-      <td>Hopkins</td>
-      <td>NaN</td>
+      <td>fhl_2011_Brezicha_25959.tei.xml</td>
+      <td>urn:lsid:marinespecies.org:taxname:431072</td>
+      <td>radius</td>
+      <td>https://www.gbif.org/species/search?q=radius&amp;q...</td>
+      <td>2011-12-09</td>
+      <td>[(1508076, San Juan Channel), (1507585, Porter)]</td>
+      <td>[sea]</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>Black, Patricia Ann</td>
-      <td>None</td>
-      <td>1963</td>
-      <td>Description and habitat of some micro-organism...</td>
-      <td>black turban snail, Tegula</td>
-      <td>The digestive tract of a gastropod was examine...</td>
-      <td>Hopkins</td>
-      <td>NaN</td>
+      <td>fhl_2011_Brezicha_25959.tei.xml</td>
+      <td>urn:lsid:marinespecies.org:taxname:711954</td>
+      <td>Parastichopus californicus</td>
+      <td>https://www.gbif.org/species/search?q=Parastic...</td>
+      <td>2011-12-09</td>
+      <td>[(1507585, Porter)]</td>
+      <td>[sub-tidal, sea]</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>Bollay, Melody</td>
-      <td>None</td>
-      <td>1963</td>
-      <td>Distribution and utilization of gastropod shel...</td>
-      <td>black turban snail, Tegula</td>
-      <td>1) Of the three species of hermit crabs found ...</td>
-      <td>Hopkins</td>
-      <td>NaN</td>
+      <td>fhl_2011_Bockmon_26635.tei.xml</td>
+      <td>urn:lsid:marinespecies.org:taxname:603085</td>
+      <td>trossulus</td>
+      <td>https://www.gbif.org/species/search?q=trossulu...</td>
+      <td></td>
+      <td>[(1514917, Jackson Beach), (1507030, north end...</td>
+      <td>[]</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>Burke, William Romney</td>
-      <td>None</td>
-      <td>1963</td>
-      <td>Chemoreception by Tegula funebralis (Mollusca:...</td>
-      <td>black turban snail, Tegula</td>
-      <td>Tegula funebralis has both gustatory and olfac...</td>
-      <td>Hopkins</td>
-      <td>NaN</td>
+      <td>fhl_2011_Bockmon_26635.tei.xml</td>
+      <td>urn:lsid:marinespecies.org:taxname:112078</td>
+      <td>ammonia</td>
+      <td>https://www.gbif.org/species/search?q=ammonia&amp;...</td>
+      <td></td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>11</td>
     </tr>
   </tbody>
 </table>
@@ -393,111 +710,12 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">papers</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Author</th>
-      <th>Secondary Author</th>
-      <th>Year</th>
-      <th>Title</th>
-      <th>Keywords</th>
-      <th>Abstract</th>
-      <th>Institution</th>
-      <th>status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>4834</th>
-      <td>Delaney, Paul M.</td>
-      <td>None</td>
-      <td>None</td>
-      <td>Terminological suggestions for isopod maxillul...</td>
-      <td>None</td>
-      <td>None</td>
-      <td>Wrigley Marine Science Center</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4835</th>
-      <td>Chanda, Suvomoy</td>
-      <td>None</td>
-      <td>None</td>
-      <td>Population structure of Pachygrapsus crassipes...</td>
-      <td>None</td>
-      <td>None</td>
-      <td>Wrigley Marine Science Center</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4836</th>
-      <td>Callahan, Margaret M.</td>
-      <td>None</td>
-      <td>None</td>
-      <td>Synergistic effects of mercuric chloride and s...</td>
-      <td>None</td>
-      <td>None</td>
-      <td>Wrigley Marine Science Center</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4837</th>
-      <td>Baier</td>
-      <td>None</td>
-      <td>1979</td>
-      <td>None</td>
-      <td>None</td>
-      <td>None</td>
-      <td>Wrigley Marine Science Center</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4838</th>
-      <td>Aguilar</td>
-      <td>None</td>
-      <td>1983</td>
-      <td>Observations of the endoskeleton and pereiopod...</td>
-      <td>None</td>
-      <td>None</td>
-      <td>Wrigley Marine Science Center</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first</span> <span class="o">=</span> <span class="n">papers</span><span class="o">.</span><span class="n">sample</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_records</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s1">&#39;../data/species-records.json&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="worms-marine-species-dataframe">
-<h2><span class="section-number">1.1. </span>WorMS Marine Species Dataframe<a class="headerlink" href="#worms-marine-species-dataframe" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="location-dataframe">
-<h2><span class="section-number">1.2. </span>Location Dataframe<a class="headerlink" href="#location-dataframe" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
