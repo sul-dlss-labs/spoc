@@ -1,6 +1,7 @@
 import pandas as pd  # type: ignore
 import streamlit as st  # type: ignore
-
+from st_aggrid import AgGrid, DataReturnMode, GridOptionsBuilder  # type: ignore
+from st_aggrid import GridUpdateMode  # type: ignore
 import streamlit.components.v1 as components  # type: ignore
 from jinja2 import Template
 
@@ -13,18 +14,39 @@ main_col, geo_col, action_col = st.beta_columns([2, 1, 0.5])
 
 species = pd.read_json("data/species-records.json")
 
+grid_options = GridOptionsBuilder.from_dataframe(species)
+
+# Grid options
+grid_options.configure_selection("single", use_checkbox=True)
+grid_options.configure_pagination(paginationAutoPageSize=True)
+
 with main_col:
     """
     # SPOC Verifier
     """
-    st.dataframe(species)
+    records_grid = AgGrid(
+        species,
+        gridOptions=grid_options.build(),
+        data_return_mode=DataReturnMode.FILTERED,
+        update_mode=GridUpdateMode.MODEL_CHANGED,
+        allow_unsafe_jscode=True,
+    )
+
+selected = records_grid["selected_rows"]
+selected_df = pd.DataFrame(selected)
 
 with geo_col:
-    """
-    # A-A03
-    [PLACE]
+    if not selected_df.empty:
+        f"""
+        ## {selected_df['Species'][0]}
 
-    """
+        ## Places
+        """
+        for place in selected_df["Place"]:
+            place = eval(place)
+            if len(place) > 0:
+                f"[{place[0][1]}]({place[0][0]})"
 
 with action_col:
-    components.html(action_template.render(status="select"), height=75, width=65)
+    action_html = action_template.render(status="select")
+    components.html(action_html, height=75, width=65)
