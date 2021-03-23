@@ -28,10 +28,10 @@ jobs:
       run: |
         # stop the build if there are Python syntax errors or undefined names
         # See https://flake8.pycqa.org/en/latest/user/options.html
-        flake8 . --count --show-source --statistics --max-line-length=127 --exclude=doc
+        flake8 . --count --show-source --statistics --max-line-length=127 --exclude=doc,spacy-lookup
     - name: Code formatting with black
-      run: black --check src
+      run: black --check src --exclude spacy-lookup
     - name: Type checking with mypy
-      run: mypy src
+      run: mypy src --exclude spacy-lookup
     - name: Test with pytest
       run: pytest test/
