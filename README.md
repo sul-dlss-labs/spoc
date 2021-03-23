@@ -28,8 +28,8 @@ Publish the documentation to Github pages
 
 ### Testing
 The SPOC project uses Python types with [mypy][MYPY], linting with [Flake8][FLK8], and [Black][BLK]
-for Python code formatting. Unit tests use the standard Python `unittest` and can be run
-with `python3 setup.py test` in the root directory.
+for Python code formatting. Unit tests use the [pytest][PYTST] and can be run
+with `pytest test/` from the root directory.
 
 [Cypress][CYPRESS] is used for end-to-end integration testing.
 
@@ -42,4 +42,5 @@ The publicly available [Streamlit][STRMLIT] application is hosted on AWS.
 [FLK8]: https://flake8.pycqa.org/en/latest/
 [GBIF]: https://www.gbif.org/
 [MYPY]: https://mypy.readthedocs.io/en/stable/
+[PYTST]: https://docs.pytest.org/en/stable/
 [STRMLIT]: https://www.streamlit.io/
