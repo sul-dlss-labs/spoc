@@ -48,15 +48,6 @@ def get_entities(doc: spacy.tokens.Doc) -> tuple:
     return species, locations, habitats
 
 
-def get_all_text(xml_doc: etree.Element) -> str:
-    """Extracts all text from div elements from the TEI Body"""
-    full_text = ""
-    for div in xml_doc.findall("tei:text/tei:body/tei:div", namespaces=TEI):
-        for text in div.itertext():
-            full_text += text
-    return full_text
-
-
 def process_div(
     div: etree.Element,
     nlp: spacy.lang,
@@ -89,19 +80,12 @@ def process_div(
 
 
 def process_xml(raw_xml: str, filename: str, nlp: spacy.lang) -> list:
-    """Processes raw TEI XML and returns a list of records"""
+    """Processes raw TEI XML and returns a list of records. Currently
+    called by the data-prep.ipynb Jupyter notebook"""
     # Create an XML document from xml path
     tei_xml = etree.XML(raw_xml)
+    publication_date = get_date(tei_xml)
     divs = tei_xml.findall("tei:text/tei:body/tei:div", namespaces=TEI)
-    # Extracts Publication Date if it exists
-    pub_date_element = tei_xml.find(
-        "tei:teiHeader/tei:fileDesc/tei:publicationStmt/tei:date",
-        namespaces=TEI,  # noqa: E501
-    )
-    if pub_date_element is not None:
-        publication_date = pub_date_element.attrib.get("when", "")
-    else:
-        publication_date = ""
     records = []
     for i, div in enumerate(divs):
         records.extend(

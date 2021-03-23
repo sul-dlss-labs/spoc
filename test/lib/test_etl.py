@@ -1,6 +1,5 @@
 import os
 import sys
-
 import lxml.etree as etree
 import pytest
 
@@ -33,13 +32,3 @@ def test_get_date(example_tei):
 
 def test_missing_date(empty_tei):
     assert etl.get_date(empty_tei) == ""
-
-
-def test_get_text(example_tei):
-    paper_text = etl.get_all_text(example_tei)
-    assert len(paper_text) == 24577
-    assert "fluctuations in suspended and seabed sediments" in paper_text
-
-
-def test_no_text(empty_tei):
-    assert etl.get_all_text(empty_tei) == ""
