@@ -3,6 +3,8 @@ name: Deploy to AWS EC2
 on:
   push:
     branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 env:
   AWS_EC2_PRIVATE_KEY: ${{secrets.AWS_EC2_PRIVATE_KEY}}
@@ -27,4 +29,4 @@ jobs:
           ls -l ~/.ssh/
       - name: Login to EC2 server and run deploy script
         run: |
-          ssh -i ~/.ssh/private.key ubuntu@"$AWS_EC2_HOST" ./spoc/deploy.sh
+          ssh -i ~/.ssh/private.key ubuntu@"$AWS_EC2_HOST" '. ~/spoc/deploy.sh'
