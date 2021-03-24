@@ -25,5 +25,4 @@ services:
 
 volumes:
   papers_tei:
-    name: ${PAPERS_TEI}
-    # external: true
+    external: true
