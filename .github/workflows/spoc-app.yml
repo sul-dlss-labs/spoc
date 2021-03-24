@@ -33,5 +33,7 @@ jobs:
       run: black --check src --exclude spacy-lookup
     - name: Type checking with mypy
       run: mypy src --exclude spacy-lookup
+    - name: Download spaCy English Medium
+      run: python -m spacy download en_core_web_md
     - name: Test with pytest
       run: pytest test/
