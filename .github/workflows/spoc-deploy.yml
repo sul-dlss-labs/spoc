@@ -20,6 +20,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Debug
+        run: |
+          mkdir -p .ssh/
+          ls -al
+          ls -l .ssh/
+          echo "$AWS_EC2_PRIVATE_KEY"
       - name: Set up private key on runner
         run: |
           mkdir -p .ssh/
