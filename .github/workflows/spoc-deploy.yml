@@ -24,8 +24,9 @@ jobs:
         run: |
           echo "HERE"
           pwd
-          sudo mkdir -p ~/.ssh/
+          whoami
           ls -l ~/.ssh
+          mkdir -p ~/.ssh/
       - name: Set up private key on runner
         run: |
           mkdir -p ~/.ssh/
