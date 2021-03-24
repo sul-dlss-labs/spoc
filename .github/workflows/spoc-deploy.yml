@@ -3,8 +3,6 @@ name: Deploy to AWS EC2
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
 env:
   AWS_EC2_PRIVATE_KEY: ${{secrets.AWS_EC2_PRIVATE_KEY}}
