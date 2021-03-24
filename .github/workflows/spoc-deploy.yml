@@ -24,8 +24,8 @@ jobs:
         run: |
           mkdir -p .ssh/
           ls -al
+          echo "$AWS_EC2_PRIVATE_KEY" > .ssh/private.key
           ls -l .ssh/
-          echo "$AWS_EC2_PRIVATE_KEY"
       - name: Set up private key on runner
         run: |
           mkdir -p .ssh/
