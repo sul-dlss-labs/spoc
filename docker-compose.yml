@@ -19,4 +19,4 @@ services:
       context: .
       dockerfile: DockerfileNginx
     ports:
-      - 8100:80
+      - 80:80

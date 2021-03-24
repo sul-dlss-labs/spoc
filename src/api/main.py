@@ -20,7 +20,7 @@ class Record(BaseModel):
 app = FastAPI()
 
 
-@app.get("/papers/{paper_id}")
+@app.get("/api/papers/{paper_id}")
 async def get_paper_records(paper_id: str):
     # Returns all of the records associated with a paper
     paper_filename = f"{paper_id}.tei.xml"
@@ -36,7 +36,7 @@ async def get_paper_records(paper_id: str):
     return {"id": paper_id, "records": records.to_dict(orient="records")}
 
 
-@app.get("/records/")
+@app.get("/api/records/")
 async def get_record(paper_id: str, species_id: str):
     record = all_records[
         all_records["Paper ID"].isin([paper_id])
@@ -48,16 +48,16 @@ async def get_record(paper_id: str, species_id: str):
     return record
 
 
-@app.put("/records/")
+@app.put("/api/records/")
 async def update_record(record: Record):
     return record
 
 
-@app.delete("/records/")
+@app.delete("/api/records/")
 async def delete_record(record: Record):
     return {"message": f"{record.paper_id} {record.species_id} deleted"}
 
 
-@app.get("/")
+@app.get("/api/")
 async def root():
     return {"message": "SPOC Endpoint"}
