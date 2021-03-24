@@ -32,6 +32,14 @@ def test_fail_read_paper():
     assert response.json() == {"detail": "madeup_id not found"}
 
 
+def test_missing_paper_div():
+    response = client.get("/api/div/?paper_id=123&div_num=1")
+    assert response.status_code == 404
+    assert response.json() == {"detail": "Cannot find 123 XML"}
+    response = client.get("/api/div/?paper_id=hms_by815vx7135&div_num=90")
+    assert response.status_code == 404
+
+
 def test_read_record():
     # Existing Record
     pass

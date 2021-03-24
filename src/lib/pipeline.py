@@ -1,35 +1,46 @@
 """Species Entity Recogition Pipeline"""
 
-import pandas as pd
-import spacy
+import os
+import pathlib
+import pandas as pd  # type: ignore
+import spacy  # type: ignore
 
-from spacy.language import Language
-from spacy_lookup import Entity
+from spacy.language import Language  # type: ignore
+from spacy_lookup import Entity  # type: ignore
 
-species = pd.read_json('../data/species.json')
-locations = pd.read_json('../data/locations.json')
-habitats = pd.read_json('../data/habitats.json')
+data = pathlib.Path(os.path.abspath(os.path.join("data")))
+
+species = pd.read_json(data / "species.json")
+locations = pd.read_json(data / "locations.json")
+habitats = pd.read_json(data / "habitats.json")
 
 species_dict = dict(zip(species.taxonID, species.scientificName))
 location_dict = dict(zip(locations.FEATURE_ID, locations.FEATURE_NAME))
 for row in [species_dict, location_dict]:
     for key, val in row.items():
-        row[key] = [val,]
+        row[key] = [
+            val,
+        ]
 
-@Language.factory(name='species_entity')
+
+@Language.factory(name="species_entity")
 def create_species_entity(nlp: Language, name: str):
-    return Entity(name=name, keywords_dict=species_dict, label='SPECIES')
+    return Entity(name=name, keywords_dict=species_dict, label="SPECIES")
 
-@Language.factory(name='location_entity')
+
+@Language.factory(name="location_entity")
 def create_location_entity(nlp: Language, name: str):
-    return Entity(name=name, keywords_dict=location_dict, label='LOCATION')
+    return Entity(name=name, keywords_dict=location_dict, label="LOCATION")
 
-@Language.factory(name='habitat_entity')
+
+@Language.factory(name="habitat_entity")
 def create_habitat_entity(nlp: Language, name: str):
-    return Entity(name=name, keywords_list=list(habitats.Habitat), label='HABITAT')
+    habitats_list = list(habitats.Habitat)
+    return Entity(name=name, keywords_list=habitats_list, label="HABITAT")
 
-nlp = spacy.load('en_core_web_md')
-nlp.add_pipe('species_entity')
-nlp.add_pipe('location_entity')
-nlp.add_pipe('habitat_entity')
+
+nlp = spacy.load("en_core_web_md")
+nlp.add_pipe("species_entity")
+nlp.add_pipe("location_entity")
+nlp.add_pipe("habitat_entity")
 nlp.remove_pipe("ner")
