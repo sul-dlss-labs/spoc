@@ -1,0 +1,15 @@
+version: "3"
+services:
+  verifier:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8501:8501
+
+  api:
+    build:
+      context: .
+      dockerfile: DockerfileAPI
+    ports:
+      - 8000:8000
