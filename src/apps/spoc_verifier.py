@@ -29,7 +29,6 @@ with main_col:
         gridOptions=grid_options.build(),
         data_return_mode=DataReturnMode.FILTERED,
         update_mode=GridUpdateMode.MODEL_CHANGED,
-        allow_unsafe_jscode=True,
     )
 
 selected = records_grid["selected_rows"]
