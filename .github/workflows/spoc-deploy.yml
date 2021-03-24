@@ -24,6 +24,7 @@ jobs:
           echo "$AWS_EC2_PRIVATE_KEY" > ~/.ssh/private.key
           chmod 400 ~/.ssh/private.key
           ssh-keyscan -H $AWS_EC2_HOST > ~/.ssh/known_hosts
+          ls -l ~/.ssh/
       - name: Login to EC2 server and run deploy script
         run: |
           ssh -i ~/.ssh/private.key ubuntu@"$AWS_EC2_HOST" .spoc/deploy.sh
