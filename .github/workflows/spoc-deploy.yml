@@ -26,13 +26,14 @@ jobs:
           ls -al
           echo "$AWS_EC2_PRIVATE_KEY" > .ssh/private.key
           chmod 400 .ssh/private.key
+          ssh-keyscan -H "$AWS_EC2_HOST" > .ssh/known_hosts
           ls -l .ssh/
       - name: Set up private key on runner
         run: |
           mkdir -p .ssh/
           echo "$AWS_EC2_PRIVATE_KEY" > .ssh/private.key
           chmod 400 .ssh/private.key
-          ssh-keyscan -H $AWS_EC2_HOST > .ssh/known_hosts
+          ssh-keyscan -H "$AWS_EC2_HOST" > .ssh/known_hosts
           ls -al
           ls -l .ssh/
       - name: Login to EC2 server and run deploy script
