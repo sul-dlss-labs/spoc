@@ -13,6 +13,8 @@ services:
       dockerfile: DockerfileAPI
     ports:
       - 8000:8000
+    volumes:
+      - papers_tei:/usr/share/papers_tei
 
   http:
     build:
@@ -20,3 +22,8 @@ services:
       dockerfile: DockerfileNginx
     ports:
       - 80:80
+
+volumes:
+  papers_tei:
+    name: ${PAPERS_TEI}
+    # external: true
