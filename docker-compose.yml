@@ -13,10 +13,3 @@ services:
       dockerfile: DockerfileAPI
     ports:
       - 8000:8000
-
-  http:
-    build:
-      context: .
-      dockerfile: DockerfileNginx
-    ports:
-      - 80:80
