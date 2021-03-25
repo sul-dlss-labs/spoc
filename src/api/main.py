@@ -17,7 +17,7 @@ sys.path.append(os.path.abspath(os.path.join("..", "config")))
 from config.base import settings  # type: ignore # noqa: E402
 
 xml_path = pathlib.Path(settings.papers_tei)
- 
+
 data = pathlib.Path(os.path.abspath(os.path.join("data")))
 
 # This should be cached
