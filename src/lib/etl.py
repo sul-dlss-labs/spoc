@@ -1,7 +1,9 @@
 """ETL for SPOC Papers"""
 import spacy  # type: ignore
+from spacy import displacy  # type: ignore
 import pandas as pd  # type: ignore
 import lxml.etree as etree  # type: ignore
+from bs4 import BeautifulSoup  # type: ignore
 
 from typing import Any, Dict, List
 
@@ -46,6 +48,36 @@ def get_entities(doc: spacy.tokens.Doc) -> tuple:
     locations = list(set(places))
     habitats = list(set(habitats))
     return species, locations, habitats
+
+
+def enrich_entities(doc: spacy.Language, paper_id: str) -> str:
+    """
+    Enriches entities from the spaCy's displacy with clickable
+    actions
+
+    :param doc: spaCy Doc
+    :param paper_id: Paper ID
+    """
+    options = {"colors": {"LOCATION": "green", "SPECIES": "pink", "HABITAT": "yellow"}}
+    ner_html = displacy.render(doc, style="ent", options=options)
+    ner_soup = BeautifulSoup(ner_html, "html.parser")
+    # Finds all Entities, creates three links for verified, rejected, and
+    # drop
+    marks = ner_soup.find_all("mark")
+    for mark in marks:
+        mark_values = mark.text.split("\n")
+        entity, label = mark_values[1].strip(), mark_values[2].strip()
+        verifier_a = ner_soup.new_tag("button")
+        verifier_a.string = "+"
+        verifier_a["onclick"] = f"verify(event, '{entity}', '{label}','{paper_id}')"
+        verifier_a["style"] = "width: 16px"
+        mark.append(verifier_a)
+        rejecter_a = ner_soup.new_tag("button")
+        rejecter_a.string = "-"
+
+        rejecter_a["onclick"] = f"reject(event, '{entity}', '{label}','{paper_id}')"
+        mark.append(rejecter_a)
+    return ner_soup.prettify()
 
 
 def process_div(

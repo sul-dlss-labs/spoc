@@ -7,18 +7,17 @@ from typing import Optional
 
 import pandas as pd  # type: ignore
 import lxml.etree as etree  # type: ignore
-from spacy import displacy  # type: ignore
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
 from ..lib.pipeline import nlp  # type: ignore
-from ..lib.etl import TEI  # type: ignore
+from ..lib.etl import TEI, enrich_entities  # type: ignore
 
 sys.path.append(os.path.abspath(os.path.join("..", "config")))
 from config.base import settings  # type: ignore # noqa: E402
 
 xml_path = pathlib.Path(settings.papers_tei)
- 
+
 data = pathlib.Path(os.path.abspath(os.path.join("data")))
 
 # This should be cached
@@ -62,7 +61,8 @@ async def get_div_html(paper_id: str, div_num: int):
     for row in div.itertext():
         text += f" {row}"
     doc = nlp(text)
-    return {"html": displacy.render(doc, style="ent")}
+    enriched_html = enrich_entities(doc, paper_id)
+    return {"html": enriched_html}
 
 
 @app.get("/api/papers/{paper_id}")

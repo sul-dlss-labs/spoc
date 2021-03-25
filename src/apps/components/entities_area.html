@@ -1,0 +1,14 @@
+<script>
+  const reject = (event, entity_string, label, paper_id) => {
+    alert(`Would reject ${entity_string} ${label} ${paper_id}`)
+    event.preventDefault()
+  }
+
+  const verify = (event, entity_string, label, paper_id) => {
+   alert(`Would verify ${entity_string} ${label} ${paper_id}`)
+   event.preventDefault()
+  }
+</script>
+<div style="font-family: 'IBM Plex Sans',sans-serif;">
+{{ content }}
+</div>
