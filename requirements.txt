@@ -13,4 +13,6 @@ fastapi==0.63.0
 pytest==6.2.2
 lxml==4.6.2
 streamlit-aggrid==0.1.9
+requests==2.25.1
+beautifulsoup4==4.9.3
 -e git+https://github.com/sul-dlss-labs/spacy-lookup.git@57fdf93a01db7aaac6ec4f896f6f7aa60eedeb50#egg=spacy_lookup

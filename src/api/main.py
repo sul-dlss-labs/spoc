@@ -18,7 +18,7 @@ sys.path.append(os.path.abspath(os.path.join("..", "config")))
 from config.base import settings  # type: ignore # noqa: E402
 
 xml_path = pathlib.Path(settings.papers_tei)
-
+ 
 data = pathlib.Path(os.path.abspath(os.path.join("data")))
 
 # This should be cached
@@ -45,7 +45,10 @@ async def get_div_html(paper_id: str, div_num: int):
     :param paper_id: Name of the TEI-XML file
     :param div_enum: Index of DIV in the TEI-XML body
     """
-    paper_path = xml_path / f"{paper_id}.tei.xml"
+    if paper_id.endswith(".xml"):
+        paper_path = xml_path / paper_id
+    else:
+        paper_path = xml_path / f"{paper_id}.tei.xml"
     if not paper_path.exists():
         msg = f"Cannot find {paper_id} XML"
         raise HTTPException(status_code=404, detail=msg)
