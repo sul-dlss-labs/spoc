@@ -37,6 +37,15 @@ def test_fail_read_paper():
     assert response.json() == {"detail": "madeup_id not found"}
 
 
+def test_get_location_coordinates():
+    places = "[[1652821,'Pacific Grove'],[230848, 'Cabrillo Point']]"
+    response = client.get(f"/api/coordinates/?places={places}")
+    assert response.status_code == 200
+    assert response.json().get('lat_mean') == 37.9835382
+    assert response.json().get('long_mean') == -122.87248535
+    assert len(response.json().get('markers')) == 2
+
+
 def test_missing_paper_div():
     response = client.get("/api/div/?paper_id=123&div_num=1")
     assert response.status_code == 404

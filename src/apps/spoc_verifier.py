@@ -1,10 +1,13 @@
 import os
 import sys
+import folium  # type: ignore
 import pandas as pd  # type: ignore
 import requests
 import streamlit as st  # type: ignore
 from st_aggrid import AgGrid, DataReturnMode, GridOptionsBuilder  # type: ignore
 from st_aggrid import GridUpdateMode  # type: ignore
+from streamlit_folium import folium_static  # type: ignore
+
 import streamlit.components.v1 as components  # type: ignore
 from jinja2 import Template
 
@@ -30,6 +33,7 @@ grid_options = GridOptionsBuilder.from_dataframe(species)
 grid_options.configure_selection("single", use_checkbox=True)
 grid_options.configure_pagination(paginationAutoPageSize=True)
 
+
 with main_col:
     """
     # SPOC Verifier
@@ -40,28 +44,42 @@ with main_col:
         data_return_mode=DataReturnMode.FILTERED,
         update_mode=GridUpdateMode.MODEL_CHANGED,
     )
-
-selected = records_grid["selected_rows"]
-selected_df = pd.DataFrame(selected)
+    selected = records_grid["selected_rows"]
 
 with geo_col:
-    if not selected_df.empty:
+    if len(selected) > 0:
         f"""
-        ## {selected_df['Species'][0]}
+        ## {selected[0]['Species']}
 
         """
-        div_url = f"{settings.api_url}/api/div/?paper_id={selected_df['Paper ID'][0]}&div_num={selected_df['div_enum'][0]}"
+        div_url = f"{settings.api_url}/api/div/?paper_id={selected[0]['Paper ID']}&div_num={selected[0]['div_enum']}"
         result = requests.get(div_url)
         entities_html = entities_template.render(content=result.json().get("html"))
         components.html(entities_html, height=500, scrolling=True)
-        """
-        ## Places
-        """
-        for place in selected_df["Place"]:
-            place = eval(place)
-            if len(place) > 0:
-                f"[{place[0][1]}]({place[0][0]})"
+
 
 with action_col:
     action_html = action_template.render(status="select")
     components.html(action_html, height=75, width=65)
+
+if len(selected) > 0:
+    """
+    ## Places
+    """
+    geo_request = requests.get(
+        f"http://localhost:8000/api/coordinates/?places={selected[0]['Place']}"
+    )
+    geo_result = geo_request.json()
+    if len(geo_result) < 1:
+        st.text("No places found")
+    else:
+        m = folium.Map(
+            location=[geo_result["lat_mean"], geo_result["long_mean"]], zoom_start=7
+        )
+        for place in geo_result["markers"]:
+            folium.Marker(
+                [place["latitude"], place["longitude"]],
+                popup=place["label"],
+                tooltip=place["label"],
+            ).add_to(m)
+        folium_static(m)

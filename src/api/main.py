@@ -22,6 +22,7 @@ data = pathlib.Path(os.path.abspath(os.path.join("data")))
 
 # This should be cached
 all_records = pd.read_json(data / "species-records.json")
+locations = pd.read_json(data / "locations.json")
 
 
 class Record(BaseModel):
@@ -34,6 +35,29 @@ class Record(BaseModel):
 
 
 app = FastAPI()
+
+
+@app.get("/api/coordinates")
+async def get_location_coordinates(places: str):
+    places = eval(places)
+    if len(places) < 1:
+        return {}
+    place_idents = [r[0] for r in places]
+    result = locations[locations["FEATURE_ID"].isin(place_idents)]
+    output = {
+        "lat_mean": result["LATITUDE"].mean(),
+        "long_mean": result["LONGITUDE"].mean(),
+        "markers": [],
+    }
+    for row in result.iterrows():
+        output["markers"].append(
+            {
+                "latitude": row[1]["LATITUDE"],
+                "longitude": row[1]["LONGITUDE"],
+                "label": f"{row[1]['FEATURE_NAME']}, {row[1]['STATE']}",
+            }
+        )
+    return output
 
 
 @app.get("/api/div/")
