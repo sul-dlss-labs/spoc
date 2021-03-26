@@ -26,6 +26,11 @@ Publish the documentation to Github pages
 
 `ghp-import -n -p -f doc/_build/html`
 
+### Setting up SSL using LetsEncrypt
+On the AWS EC2 instance, follow the instructions for installing and configuring [certbot][CERTBOT].
+For step 7, just get the certificate only using `sudo certbot --standalone -d taxa.stanford.edu certonly`
+To renew the cert, stop the SPOC containers and run `sudo certbot renew --dry-run`, and again without the --dry-run flag to actually renew.
+
 ### Testing
 The SPOC project uses Python types with [mypy][MYPY], linting with [Flake8][FLK8], and [Black][BLK]
 for Python code formatting. Unit tests use the [pytest][PYTST] and can be run
@@ -44,3 +49,4 @@ The publicly available [Streamlit][STRMLIT] application is hosted on AWS.
 [MYPY]: https://mypy.readthedocs.io/en/stable/
 [PYTST]: https://docs.pytest.org/en/stable/
 [STRMLIT]: https://www.streamlit.io/
+[CERTBOT]:https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx
