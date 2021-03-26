@@ -1,4 +1,5 @@
 import pandas as pd  # type: ignore
+import requests
 import streamlit as st  # type: ignore
 from st_aggrid import AgGrid, DataReturnMode, GridOptionsBuilder  # type: ignore
 from st_aggrid import GridUpdateMode  # type: ignore
@@ -9,6 +10,9 @@ st.set_page_config(page_title="SPOC Verifier", layout="wide")
 
 with open("src/apps/components/action_button.html") as fo:
     action_template = Template(fo.read())
+
+with open("src/apps/components/entities_area.html") as fo:
+    entities_template = Template(fo.read())
 
 main_col, geo_col, action_col = st.beta_columns([2, 1, 0.5])
 
@@ -39,6 +43,12 @@ with geo_col:
         f"""
         ## {selected_df['Species'][0]}
 
+        """
+        div_url = f"/api/div/?paper_id={selected_df['Paper ID'][0]}&div_num={selected_df['div_enum'][0]}"
+        result = requests.get(div_url)
+        entities_html = entities_template.render(content=result.json().get("html"))
+        components.html(entities_html, height=500, scrolling=True)
+        """
         ## Places
         """
         for place in selected_df["Place"]:

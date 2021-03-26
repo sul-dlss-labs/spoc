@@ -1,14 +1,19 @@
 # noqa: E402
 import os
+import pathlib
 import sys
 from fastapi.testclient import TestClient
 
 ROOT_PATH = os.path.abspath(".")
 sys.path.append(ROOT_PATH)
 
-from src.api.main import app  # type: ignore # noqa: E402
+root_path = pathlib.Path(ROOT_PATH)
 
-client = TestClient(app)
+import src.api.main as fast_api  # type: ignore # noqa: E402
+
+client = TestClient(fast_api.app)
+
+fast_api.xml_path = root_path/"test/fixtures"
 
 
 def test_read_main():
@@ -38,6 +43,12 @@ def test_missing_paper_div():
     assert response.json() == {"detail": "Cannot find 123 XML"}
     response = client.get("/api/div/?paper_id=hms_by815vx7135&div_num=90")
     assert response.status_code == 404
+
+
+def test_get_div_html():
+    response = client.get("/api/div/?paper_id=example&div_num=1")
+    assert response.status_code == 200
+    assert len(response.json()['html']) > 1
 
 
 def test_read_record():

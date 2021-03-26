@@ -7,12 +7,11 @@ from typing import Optional
 
 import pandas as pd  # type: ignore
 import lxml.etree as etree  # type: ignore
-from spacy import displacy  # type: ignore
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
 from ..lib.pipeline import nlp  # type: ignore
-from ..lib.etl import TEI  # type: ignore
+from ..lib.etl import TEI, enrich_entities  # type: ignore
 
 sys.path.append(os.path.abspath(os.path.join("..", "config")))
 from config.base import settings  # type: ignore # noqa: E402
@@ -45,7 +44,10 @@ async def get_div_html(paper_id: str, div_num: int):
     :param paper_id: Name of the TEI-XML file
     :param div_enum: Index of DIV in the TEI-XML body
     """
-    paper_path = xml_path / f"{paper_id}.tei.xml"
+    if paper_id.endswith(".xml"):
+        paper_path = xml_path / paper_id
+    else:
+        paper_path = xml_path / f"{paper_id}.tei.xml"
     if not paper_path.exists():
         msg = f"Cannot find {paper_id} XML"
         raise HTTPException(status_code=404, detail=msg)
@@ -59,7 +61,8 @@ async def get_div_html(paper_id: str, div_num: int):
     for row in div.itertext():
         text += f" {row}"
     doc = nlp(text)
-    return {"html": displacy.render(doc, style="ent")}
+    enriched_html = enrich_entities(doc, paper_id)
+    return {"html": enriched_html}
 
 
 @app.get("/api/papers/{paper_id}")
