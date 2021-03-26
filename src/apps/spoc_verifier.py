@@ -1,3 +1,5 @@
+import os
+import sys
 import pandas as pd  # type: ignore
 import requests
 import streamlit as st  # type: ignore
@@ -5,6 +7,10 @@ from st_aggrid import AgGrid, DataReturnMode, GridOptionsBuilder  # type: ignore
 from st_aggrid import GridUpdateMode  # type: ignore
 import streamlit.components.v1 as components  # type: ignore
 from jinja2 import Template
+
+ROOT_PATH = os.path.abspath(".")
+sys.path.append(ROOT_PATH)
+from config.base import settings  # type: ignore # noqa: E402
 
 st.set_page_config(page_title="SPOC Verifier", layout="wide")
 
@@ -44,7 +50,7 @@ with geo_col:
         ## {selected_df['Species'][0]}
 
         """
-        div_url = f"/api/div/?paper_id={selected_df['Paper ID'][0]}&div_num={selected_df['div_enum'][0]}"
+        div_url = f"{settings.api_url}/api/div/?paper_id={selected_df['Paper ID'][0]}&div_num={selected_df['div_enum'][0]}"
         result = requests.get(div_url)
         entities_html = entities_template.render(content=result.json().get("html"))
         components.html(entities_html, height=500, scrolling=True)
