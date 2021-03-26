@@ -30,6 +30,11 @@ Publish the documentation to Github pages
 On the AWS EC2 instance, follow the instructions for installing and configuring [certbot][CERTBOT].
 For step 7, just get the certificate only using `sudo certbot --standalone -d taxa.stanford.edu certonly`
 To renew the cert, stop the SPOC containers and run `sudo certbot renew --dry-run`, and again without the --dry-run flag to actually renew.
+Make sure the key files are copied into the config folder before starting the containers:
+```
+sudo cp /etc/letsencrypt/live/taxa.stanford.edu/fullchain.pem ./config/
+sudo cp /etc/letsencrypt/live/taxa.stanford.edu/privkey.pem ./config/
+```
 
 ### Testing
 The SPOC project uses Python types with [mypy][MYPY], linting with [Flake8][FLK8], and [Black][BLK]
