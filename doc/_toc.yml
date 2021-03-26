@@ -13,6 +13,10 @@
   chapters:
   - file: model-documentation
 
+- part: UI and Model Design
+  chapters:
+  - file: models
+
 - part: FastAPI Endpoint
   chapters:
   - file: api
