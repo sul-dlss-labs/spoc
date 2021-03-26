@@ -3,6 +3,10 @@
 #
 - file: intro
   numbered: true
+  
+- part: Project Design
+  chapters:
+  - file: models
 
 - part: Data and Model Prepreparation
   chapters:
@@ -12,10 +16,6 @@
 - part: Data and Model Documentation
   chapters:
   - file: model-documentation
-
-- part: UI and Model Design
-  chapters:
-  - file: models
 
 - part: FastAPI Endpoint
   chapters:
