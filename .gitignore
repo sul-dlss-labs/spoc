@@ -1,3 +1,4 @@
 data/full_text*
 SPOC_Verifier.egg-info*
 doc/_build*
+config/*.pem

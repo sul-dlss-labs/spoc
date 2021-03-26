@@ -1,3 +1,8 @@
 FROM nginx:latest
 RUN rm /etc/nginx/conf.d/default.conf
 COPY config/nginx.conf /etc/nginx/conf.d/
+
+# Comment out these lines if running on local system
+RUN mkdir -p /etc/letsencrypt/live/taxa.stanford.edu/
+COPY config/fullchain.pem /etc/letsencrypt/live/taxa.stanford.edu/fullchain.pem
+COPY config/privkey.pem /etc/letsencrypt/live/taxa.stanford.edu/privkey.pem
