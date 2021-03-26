@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 import os
 import sys
-=======
 import folium  # type: ignore
->>>>>>> Support for simple Folium Map with Location entities set as markers
 import pandas as pd  # type: ignore
 import requests
 import streamlit as st  # type: ignore
@@ -55,7 +52,7 @@ with geo_col:
         ## {selected[0]['Species']}
 
         """
-        div_url = f"{settings.api_url}/api/div/?paper_id={selected_df['Paper ID'][0]}&div_num={selected_df['div_enum'][0]}"
+        div_url = f"{settings.api_url}/api/div/?paper_id={selected[0]['Paper ID']}&div_num={selected[0]['div_enum']}"
         result = requests.get(div_url)
         entities_html = entities_template.render(content=result.json().get("html"))
         components.html(entities_html, height=500, scrolling=True)
@@ -69,15 +66,20 @@ if len(selected) > 0:
     """
     ## Places
     """
-    geo_request = requests.get(f"/api/coordinates/?places={selected[0]['Place']}")
-    geo_result = geo_request.json()
-    m = folium.Map(
-        location=[geo_result["lat_mean"], geo_result["long_mean"]], zoom_start=7
+    geo_request = requests.get(
+        f"http://localhost:8000/api/coordinates/?places={selected[0]['Place']}"
     )
-    for place in geo_result["markers"]:
-        folium.Marker(
-            [place["latitude"], place["longitude"]],
-            popup=place["label"],
-            tooltip=place["label"],
-        ).add_to(m)
-    folium_static(m)
+    geo_result = geo_request.json()
+    if len(geo_result) < 1:
+        st.text("No places found")
+    else:
+        m = folium.Map(
+            location=[geo_result["lat_mean"], geo_result["long_mean"]], zoom_start=7
+        )
+        for place in geo_result["markers"]:
+            folium.Marker(
+                [place["latitude"], place["longitude"]],
+                popup=place["label"],
+                tooltip=place["label"],
+            ).add_to(m)
+        folium_static(m)
