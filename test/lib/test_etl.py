@@ -11,7 +11,7 @@ import src.lib.etl as etl  # noqa: E402
 
 @pytest.fixture
 def example_tei():
-    with open(f"{ROOT_PATH}/test/lib/example.tei.xml", "rb") as fo:
+    with open(f"{ROOT_PATH}/test/fixtures/example.tei.xml", "rb") as fo:
         return etree.XML(fo.read())
 
 
