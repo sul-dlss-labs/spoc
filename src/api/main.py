@@ -2,18 +2,19 @@ import os
 import pathlib
 import sys
 
-
-from typing import Optional
+from typing import Any, Optional
 
 import pandas as pd  # type: ignore
 import lxml.etree as etree  # type: ignore
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel
 
 from ..lib.pipeline import nlp  # type: ignore
-from ..lib.etl import TEI, enrich_entities  # type: ignore
+from ..lib.etl import TEI, enrich_entities, save_occurrence  # type: ignore
 
-sys.path.append(os.path.abspath(os.path.join("..", "config")))
+ROOT_PATH = os.path.abspath(".")
+sys.path.append(ROOT_PATH)
+
 from config.base import settings  # type: ignore # noqa: E402
 
 xml_path = pathlib.Path(settings.papers_tei)
@@ -61,12 +62,13 @@ async def get_location_coordinates(places: str):
 
 
 @app.get("/api/div/")
-async def get_div_html(paper_id: str, div_num: int):
+async def get_div_html(paper_id: str, div_num: int, species_id: str):
     """
     Returns entity-tagged HTML for an XML div element
 
     :param paper_id: Name of the TEI-XML file
     :param div_enum: Index of DIV in the TEI-XML body
+    :param species_id: Taxon ID for the species
     """
     if paper_id.endswith(".xml"):
         paper_path = xml_path / paper_id
@@ -85,7 +87,7 @@ async def get_div_html(paper_id: str, div_num: int):
     for row in div.itertext():
         text += f" {row}"
     doc = nlp(text)
-    enriched_html = enrich_entities(doc, paper_id)
+    enriched_html = enrich_entities(doc, paper_id, div_num, species_id)
     return {"html": enriched_html}
 
 
@@ -135,6 +137,29 @@ async def update_record(record: Record):
 @app.delete("/api/records/")
 async def delete_record(record: Record):
     return {"message": f"{record.paper_id} {record.species_id} deleted"}
+
+
+class Occurrence(BaseModel):
+    species_id: str
+    paper_id: str
+    entity_id: Any
+    label: str
+    rejected: bool = False
+    div_number: Optional[int] = None
+
+
+@app.post("/api/verify")
+async def verify_occurrence(occurrence: Occurrence, request: Request):
+    result = save_occurrence(
+        occurrence.paper_id,
+        occurrence.species_id,
+        request.client.host,
+        occurrence.label,
+        occurrence.div_number,
+        occurrence.entity_id,
+        occurrence.rejected,
+    )
+    return {"occurrence_id": result}
 
 
 @app.get("/api/")

@@ -1,5 +1,7 @@
 import os
 import sys
+import urllib.parse as url_parse
+
 import folium  # type: ignore
 import pandas as pd  # type: ignore
 import requests
