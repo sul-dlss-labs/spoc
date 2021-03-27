@@ -7,6 +7,7 @@ from typing import Any, Optional
 import pandas as pd  # type: ignore
 import lxml.etree as etree  # type: ignore
 from fastapi import FastAPI, HTTPException, Request
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
 from ..lib.pipeline import nlp  # type: ignore
@@ -14,6 +15,7 @@ from ..lib.etl import TEI, enrich_entities, save_occurrence  # type: ignore
 
 ROOT_PATH = os.path.abspath(".")
 sys.path.append(ROOT_PATH)
+
 
 from config.base import settings  # type: ignore # noqa: E402
 
@@ -36,6 +38,16 @@ class Record(BaseModel):
 
 
 app = FastAPI()
+
+origins = ["https://taxa.stanford.edu", "http://taxa.stanford.edu"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/api/coordinates")

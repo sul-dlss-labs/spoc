@@ -1,7 +1,8 @@
 <script>
 
   const verify = (event, reject) => {
-    const data = event.originalTarget.dataset
+    console.log(`In verify`, event)
+    const data = event.target.dataset
     const formData = {
       entity_id: data.entity_id,
       paper_id: data.paper_id,
@@ -10,14 +11,13 @@
       div_number: data.div_number,
       rejected: reject
     }
-    fetch(`${data.api_url}/api/verify/`,{
+    fetch(`${data.api_url}/api/verify`,{
       method: 'POST',
-      mode: 'no-cors',
-      headers:  {'Content-Type': 'application/json'},
+      mode: "no-cors",
+      headers: { 'Access-Control-Allow-Origin': '*'},
       body: JSON.stringify(formData)
      }).then((resp) => {
-       // Should update calling button's appearence/disable?
-       event.originalTarget.setAttribute('disabled', 'disabled')
+       event.target.setAttribute('disabled', 'disabled')
      }).catch((error) => {
        console.log(`Error`, error)
      })
