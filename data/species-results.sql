@@ -40,9 +40,11 @@ CREATE TABLE OccurrenceEntity (
   ip_addr_id INTEGER NOT NULL,
   location_id INTEGER,
   habitat_id INTEGER,
+  species_id INTEGER,
   rejected BOOLEAN DEFAULT 0,
   FOREIGN KEY (occurrence_id) REFERENCES Occurrences (id),
   FOREIGN KEY (ip_addr_id) REFERENCES IPAddresses (id),
   FOREIGN KEY (location_id) REFERENCES Locations (id),
-  FOREIGN KEY (habitat_id) REFERENCES Habitats (id)
+  FOREIGN KEY (habitat_id) REFERENCES Habitats (id),
+  FOREIGN KEY (species_id) REFERENCES Species (id)
 );

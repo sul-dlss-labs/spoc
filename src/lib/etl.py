@@ -17,6 +17,7 @@ sys.path.append(ROOT_PATH)
 from config.base import settings  # type: ignore # noqa: E402
 
 root_path = pathlib.Path(ROOT_PATH)
+xml_path = pathlib.Path(settings.papers_tei)
 
 TEI = {"tei": "http://www.tei-c.org/ns/1.0"}
 
@@ -177,7 +178,7 @@ def save_occurrence(
             result = cur.fetchone()
         return result[0]
 
-    con = sqlite3.connect(root_path / "data/species-results.sqlite")
+    con = sqlite3.connect(xml_path / "species-results.sqlite")
     cur = con.cursor()
     # Retrieves paper, ip address, and species ID
     paper_db_id = __get_or_add__("Papers", "filename", paper_id)
@@ -206,13 +207,16 @@ def save_occurrence(
     )
     occurrence_entity_id = cur.lastrowid
     # Updates Occurrence Entity table for non-Species entities
-    if identifier is not None and not label.startswith("SPECIES"):
+    if identifier is not None:
         if label.startswith("LOCATION"):
             entity_db_id = __get_or_add__("Locations", "external_id", identifier)
             entity_field = "location_id"
         if label.startswith("HABITAT") and identifier is not None:
             entity_db_id = __get_or_add__("Habitats", "name", identifier)
             entity_field = "habitat_id"
+        if label.startswith("SPECIES"):
+            entity_db_id = __get_or_add__("Species", "taxon_id", identifier)
+            entity_field = "species_id"
         cur.execute(
             f"UPDATE OccurrenceEntity SET {entity_field}=? WHERE id=?",
             (entity_db_id, occurrence_entity_id),
