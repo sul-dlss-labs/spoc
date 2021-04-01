@@ -12,4 +12,4 @@ RUN python -m spacy download en_core_web_md
 
 EXPOSE 8501
 
-CMD uvicorn --host 0.0.0.0 --root-path /api src.api.main:app
+CMD uvicorn --host 0.0.0.0 src.api.main:app
