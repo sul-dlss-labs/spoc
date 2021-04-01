@@ -15,7 +15,6 @@ state = get_state()
 with colophon:
     st.image(
         image,
-        caption="Help discover species occurrences hiding in library collections.",
     )
 
     st.write("# Help discover species hiding in library collections.")
