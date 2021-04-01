@@ -67,7 +67,7 @@ if len(selected) > 0:
     ## Places
     """
     geo_request = requests.get(
-        f"http://localhost:8000/api/coordinates/?places={selected[0]['Place']}"
+        f"{settings.api_url}/api/coordinates/?places={selected[0]['Place']}"
     )
     geo_result = geo_request.json()
     if len(geo_result) < 1:

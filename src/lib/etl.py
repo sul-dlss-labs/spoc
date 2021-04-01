@@ -58,7 +58,9 @@ def enrich_entities(doc: spacy.Language, paper_id: str) -> str:
     :param doc: spaCy Doc
     :param paper_id: Paper ID
     """
-    options = {"colors": {"LOCATION": "#92c1e1", "SPECIES": "#f8a359", "HABITAT": "#c0b58b"}}
+    options = {
+        "colors": {"LOCATION": "#92c1e1", "SPECIES": "#f8a359", "HABITAT": "#c0b58b"}
+    }
     ner_html = displacy.render(doc, style="ent", options=options)
     ner_soup = BeautifulSoup(ner_html, "html.parser")
     # Finds all Entities, creates three links for verified, rejected, and
