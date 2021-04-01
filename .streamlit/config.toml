@@ -187,9 +187,3 @@ backgroundColor="#FFFFFF"
 secondaryBackgroundColor="#cfe2f1"
 textColor="#262730"
 font="sans serif"
-
-
-# Font family for all text in the app, except code blocks. One of "sans serif", "serif", or "monospace".
-# Default: "sans serif"
-font="calibri"
-
