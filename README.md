@@ -1,3 +1,5 @@
+[![SPOC application CI](https://github.com/sul-dlss-labs/spoc/actions/workflows/spoc-app.yml/badge.svg)](https://github.com/sul-dlss-labs/spoc/actions/workflows/spoc-app.yml)
+
 # Stanford Species Occurrences
 This project provides a Streamlit application that provides record-level verification of individual
 student reports for training and validation purposes as well publishing the records for inclusion
