@@ -1,5 +1,6 @@
 import os
 import pathlib
+import re
 import sys
 
 
@@ -24,6 +25,8 @@ data = pathlib.Path(os.path.abspath(os.path.join("data")))
 all_records = pd.read_json(data / "species-records.json")
 locations = pd.read_json(data / "locations.json")
 
+places_re = re.compile(r"\[*\[(\d+)")
+
 
 class Record(BaseModel):
     paper_id: str
@@ -39,10 +42,10 @@ app = FastAPI()
 
 @app.get("/api/coordinates")
 async def get_location_coordinates(places: str):
-    places = eval(places)
+    places = places_re.findall(places)  # type: ignore
     if len(places) < 1:
         return {}
-    place_idents = [r[0] for r in places]
+    place_idents = [int(r) for r in places]
     result = locations[locations["FEATURE_ID"].isin(place_idents)]
     output = {
         "lat_mean": result["LATITUDE"].mean(),
