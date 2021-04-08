@@ -15,12 +15,19 @@ locations = pd.read_json(data / "locations.json")
 habitats = pd.read_json(data / "habitats.json")
 
 species_dict = dict(zip(species.taxonID, species.scientificName))
+for key, val in species_dict.items():
+    values = [
+        val,
+    ]
+    terms = val.split()
+    if len(terms) == 2:
+        values.append(f"{terms[0][0]}. {terms[1]}")
+    species_dict[key] = values
 location_dict = dict(zip(locations.FEATURE_ID, locations.FEATURE_NAME))
-for row in [species_dict, location_dict]:
-    for key, val in row.items():
-        row[key] = [
-            val,
-        ]
+for key, val in location_dict.items():
+    location_dict[key] = [
+        val,
+    ]
 
 
 @Language.factory(name="species_entity")

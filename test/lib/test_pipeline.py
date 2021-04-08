@@ -21,3 +21,10 @@ def test_nlp():
 def test_no_ner():
     doc = pipeline.nlp("A fox jumped over the lazy dog")
     assert len(doc.ents) == 0
+
+
+def test_genus_abbreviation():
+    lice_id = "urn:lsid:marinespecies.org:taxname:519279"
+    doc = pipeline.nlp("Within the fish's gill, P. bulbovaginatus")
+    assert len(doc.ents) == 1
+    assert doc.ents[0][0]._.canonical == lice_id
