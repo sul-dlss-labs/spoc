@@ -47,15 +47,15 @@ def test_get_location_coordinates():
 
 
 def test_missing_paper_div():
-    response = client.get("/api/div/?paper_id=123&div_num=1")
+    response = client.get("/api/div/?paper_id=123&div_num=1&species_id=3445")
     assert response.status_code == 404
     assert response.json() == {"detail": "Cannot find 123 XML"}
-    response = client.get("/api/div/?paper_id=hms_by815vx7135&div_num=90")
+    response = client.get("/api/div/?paper_id=hms_by815vx7135&div_num=90&species_id=3445")
     assert response.status_code == 404
 
 
 def test_get_div_html():
-    response = client.get("/api/div/?paper_id=example&div_num=1")
+    response = client.get("/api/div/?paper_id=example&div_num=1&species_id=4456")
     assert response.status_code == 200
     assert len(response.json()['html']) > 1
 

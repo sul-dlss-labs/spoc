@@ -1,5 +1,7 @@
 import os
 import sys
+import urllib.parse as url_parse
+
 import folium  # type: ignore
 import pandas as pd  # type: ignore
 import requests
@@ -72,7 +74,14 @@ def verifier_page():
             ## {selected[0]['Species']}
 
             """
-            div_url = f"{settings.api_url}/api/div/?paper_id={selected[0]['Paper ID']}&div_num={selected[0]['div_enum']}"
+            url_params = url_parse.urlencode(
+                {
+                    "div_num": selected[0]["div_enum"],
+                    "paper_id": selected[0]["Paper ID"],
+                    "species_id": selected[0]["Instance ID"],
+                }
+            )
+            div_url = f"{settings.api_url}/api/div/?{url_params}"
             result = requests.get(div_url)
             entities_html = entities_template.render(content=result.json().get("html"))
             components.html(entities_html, height=500, scrolling=True)
