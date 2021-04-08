@@ -280,49 +280,49 @@
 <span class="g g-Whitespace">      </span><span class="mi">4</span> 
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.9.2/x64/lib/python3.9/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">run_line_magic</span><span class="nt">(self, magic_name, line, _stack_depth)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.9.4/x64/lib/python3.9/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">run_line_magic</span><span class="nt">(self, magic_name, line, _stack_depth)</span>
 <span class="g g-Whitespace">   </span><span class="mi">2342</span>                 <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;local_ns&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_local_scope</span><span class="p">(</span><span class="n">stack_depth</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">2343</span>             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
 <span class="ne">-&gt; </span><span class="mi">2344</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">2345</span>             <span class="k">return</span> <span class="n">result</span>
 <span class="g g-Whitespace">   </span><span class="mi">2346</span> 
 
-<span class="nn">/opt/hostedtoolcache/Python/3.9.2/x64/lib/python3.9/site-packages/decorator.py</span> in <span class="ni">fun</span><span class="nt">(*args, **kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">212</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">213</span>         <span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">214</span>             <span class="k">return</span> <span class="n">caller</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">extras</span> <span class="o">+</span> <span class="n">args</span><span class="p">),</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">215</span>     <span class="n">fun</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span>
-<span class="g g-Whitespace">    </span><span class="mi">216</span>     <span class="n">fun</span><span class="o">.</span><span class="n">__signature__</span> <span class="o">=</span> <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.9.4/x64/lib/python3.9/site-packages/decorator.py</span> in <span class="ni">fun</span><span class="nt">(*args, **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">229</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">kwsyntax</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">230</span>                 <span class="n">args</span><span class="p">,</span> <span class="n">kw</span> <span class="o">=</span> <span class="n">fix</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kw</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">231</span>             <span class="k">return</span> <span class="n">caller</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">extras</span> <span class="o">+</span> <span class="n">args</span><span class="p">),</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">232</span>     <span class="n">fun</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span>     <span class="n">fun</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__doc__</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.9.2/x64/lib/python3.9/site-packages/IPython/core/magic.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(f, *a, **k)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.9.4/x64/lib/python3.9/site-packages/IPython/core/magic.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(f, *a, **k)</span>
 <span class="g g-Whitespace">    </span><span class="mi">185</span>     <span class="c1"># but it&#39;s overkill for just that one bit of state.</span>
 <span class="g g-Whitespace">    </span><span class="mi">186</span>     <span class="k">def</span> <span class="nf">magic_deco</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">187</span>         <span class="n">call</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">188</span> 
 <span class="g g-Whitespace">    </span><span class="mi">189</span>         <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.9.2/x64/lib/python3.9/site-packages/IPython/core/magics/pylab.py</span> in <span class="ni">matplotlib</span><span class="nt">(self, line)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.9.4/x64/lib/python3.9/site-packages/IPython/core/magics/pylab.py</span> in <span class="ni">matplotlib</span><span class="nt">(self, line)</span>
 <span class="g g-Whitespace">     </span><span class="mi">97</span>             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Available matplotlib backends: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">backends_list</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">98</span>         <span class="k">else</span><span class="p">:</span>
 <span class="ne">---&gt; </span><span class="mi">99</span>             <span class="n">gui</span><span class="p">,</span> <span class="n">backend</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">enable_matplotlib</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">gui</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">gui</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">args</span><span class="o">.</span><span class="n">gui</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">100</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_show_matplotlib_backend</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">gui</span><span class="p">,</span> <span class="n">backend</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">101</span> 
 
-<span class="nn">/opt/hostedtoolcache/Python/3.9.2/x64/lib/python3.9/site-packages/ipykernel/zmqshell.py</span> in <span class="ni">enable_matplotlib</span><span class="nt">(self, gui)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.9.4/x64/lib/python3.9/site-packages/ipykernel/zmqshell.py</span> in <span class="ni">enable_matplotlib</span><span class="nt">(self, gui)</span>
 <span class="g g-Whitespace">    </span><span class="mi">599</span> 
 <span class="g g-Whitespace">    </span><span class="mi">600</span>     <span class="k">def</span> <span class="nf">enable_matplotlib</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">601</span>         <span class="n">gui</span><span class="p">,</span> <span class="n">backend</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">ZMQInteractiveShell</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">enable_matplotlib</span><span class="p">(</span><span class="n">gui</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">602</span> 
 <span class="g g-Whitespace">    </span><span class="mi">603</span>         <span class="kn">from</span> <span class="nn">ipykernel.pylab.backend_inline</span> <span class="kn">import</span> <span class="n">configure_inline_support</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.9.2/x64/lib/python3.9/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">enable_matplotlib</span><span class="nt">(self, gui)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.9.4/x64/lib/python3.9/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">enable_matplotlib</span><span class="nt">(self, gui)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3511</span>         <span class="sd">&quot;&quot;&quot;</span>
 <span class="g g-Whitespace">   </span><span class="mi">3512</span><span class="sd">         from IPython.core import pylabtools as pt</span>
 <span class="ne">-&gt; </span><span class="mi">3513</span><span class="sd">         gui, backend = pt.find_gui_and_backend(gui, self.pylab_gui_select)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3514</span><span class="sd"> </span>
 <span class="g g-Whitespace">   </span><span class="mi">3515</span><span class="sd">         if gui != &#39;inline&#39;:</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.9.2/x64/lib/python3.9/site-packages/IPython/core/pylabtools.py</span> in <span class="ni">find_gui_and_backend</span><span class="nt">(gui, gui_select)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.9.4/x64/lib/python3.9/site-packages/IPython/core/pylabtools.py</span> in <span class="ni">find_gui_and_backend</span><span class="nt">(gui, gui_select)</span>
 <span class="g g-Whitespace">    </span><span class="mi">278</span><span class="sd">     &quot;&quot;&quot;</span>
 <span class="g g-Whitespace">    </span><span class="mi">279</span> 
 <span class="ne">--&gt; </span><span class="mi">280</span>     <span class="kn">import</span> <span class="nn">matplotlib</span>
