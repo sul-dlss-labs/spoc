@@ -6,7 +6,7 @@
   
 - part: Project Design
   chapters:
-  - file: models
+  - file: methods
 
 - part: Data and Model Prepreparation
   chapters:
