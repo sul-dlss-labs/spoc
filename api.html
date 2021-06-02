@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>1. SPOC API &#8212; Stanford Species Occurrences</title>
     
-  <link rel="stylesheet" href="_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
 
     
   <link rel="stylesheet"
@@ -19,14 +20,10 @@
 
     
       
-  <link rel="stylesheet"
-    href="_static/vendor/open-sans_all/1.44.1/index.css">
-  <link rel="stylesheet"
-    href="_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/sphinx-book-theme.e7340bb3dbd8dde6db86f25597f54a1b.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -34,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.d3f166471bb80abb5163.js">
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
 
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -44,7 +41,7 @@
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.7d483ff0a819d6edff12ce0b1ead3928.js"></script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -56,14 +53,14 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="1. Future SPOC Work" href="future.html" />
     <link rel="prev" title="2. GROBID PDF-to-TEI XML Workflow" href="grobid-pdf.html" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
-
-
-
+    
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
     
 
     <div class="container-xl">
@@ -72,44 +69,44 @@
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
         <div class="navbar-brand-box">
-<a class="navbar-brand text-wrap" href="index.html">
-  
-  <img src="_static/SUL_AI_SPOC.png" class="logo" alt="logo">
-  
-  
-  <h1 class="site-logo" id="site-title">Stanford Species Occurrences</h1>
-  
-</a>
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      <img src="_static/SUL_AI_SPOC.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Stanford Species Occurrences</h1>
+      
+    </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form>
-<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
-    <ul class="nav sidenav_l1">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="intro.html">
    Welcome to the Species Occurrences (SPOC) project
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Project Design
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="methods.html">
    1. A Discussion of Methods in Terms of Tasks
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Data and Model Prepreparation
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="data-prep.html">
    1. Data Preparation for SPOC
@@ -121,24 +118,24 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   FastAPI Endpoint
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    1. SPOC API
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Future
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="future.html">
    1. Future SPOC Work
@@ -150,12 +147,12 @@
   </a>
  </li>
 </ul>
-<p class="caption collapsible-parent">
+<p class="caption">
  <span class="caption-text">
   Help
  </span>
 </p>
-<ul class="nav sidenav_l1">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="markdown.html">
    1. Markdown Files
@@ -163,6 +160,7 @@
  </li>
 </ul>
 
+    </div>
 </nav> <!-- To handle the deprecated key -->
 
 <div class="navbar_extra_footer">
@@ -228,12 +226,12 @@
     </div>
 </div>
 
-
             <!-- Full screen (wrap in <a> to have style consistency -->
-            <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                    data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-                    title="Fullscreen mode"><i
-                        class="fas fa-expand"></i></button></a>
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
 
@@ -292,54 +290,54 @@
 <span class="g g-Whitespace">      </span><span class="mi">4</span> 
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.9.4/x64/lib/python3.9/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">run_line_magic</span><span class="nt">(self, magic_name, line, _stack_depth)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2342</span>                 <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;local_ns&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_local_scope</span><span class="p">(</span><span class="n">stack_depth</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2343</span>             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2344</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2345</span>             <span class="k">return</span> <span class="n">result</span>
-<span class="g g-Whitespace">   </span><span class="mi">2346</span> 
+<span class="nn">/opt/hostedtoolcache/Python/3.9.5/x64/lib/python3.9/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">run_line_magic</span><span class="nt">(self, magic_name, line, _stack_depth)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2346</span>                 <span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;local_ns&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_local_scope</span><span class="p">(</span><span class="n">stack_depth</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2347</span>             <span class="k">with</span> <span class="bp">self</span><span class="o">.</span><span class="n">builtin_trap</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2348</span>                 <span class="n">result</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2349</span>             <span class="k">return</span> <span class="n">result</span>
+<span class="g g-Whitespace">   </span><span class="mi">2350</span> 
 
-<span class="nn">/opt/hostedtoolcache/Python/3.9.4/x64/lib/python3.9/site-packages/decorator.py</span> in <span class="ni">fun</span><span class="nt">(*args, **kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">229</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">kwsyntax</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">230</span>                 <span class="n">args</span><span class="p">,</span> <span class="n">kw</span> <span class="o">=</span> <span class="n">fix</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kw</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">231</span>             <span class="k">return</span> <span class="n">caller</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">extras</span> <span class="o">+</span> <span class="n">args</span><span class="p">),</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">232</span>     <span class="n">fun</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span>
-<span class="g g-Whitespace">    </span><span class="mi">233</span>     <span class="n">fun</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__doc__</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.9.5/x64/lib/python3.9/site-packages/decorator.py</span> in <span class="ni">fun</span><span class="nt">(*args, **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">230</span>             <span class="k">if</span> <span class="ow">not</span> <span class="n">kwsyntax</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">231</span>                 <span class="n">args</span><span class="p">,</span> <span class="n">kw</span> <span class="o">=</span> <span class="n">fix</span><span class="p">(</span><span class="n">args</span><span class="p">,</span> <span class="n">kw</span><span class="p">,</span> <span class="n">sig</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">232</span>             <span class="k">return</span> <span class="n">caller</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">extras</span> <span class="o">+</span> <span class="n">args</span><span class="p">),</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span>     <span class="n">fun</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__name__</span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span>     <span class="n">fun</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">=</span> <span class="n">func</span><span class="o">.</span><span class="vm">__doc__</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.9.4/x64/lib/python3.9/site-packages/IPython/core/magic.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(f, *a, **k)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.9.5/x64/lib/python3.9/site-packages/IPython/core/magic.py</span> in <span class="ni">&lt;lambda&gt;</span><span class="nt">(f, *a, **k)</span>
 <span class="g g-Whitespace">    </span><span class="mi">185</span>     <span class="c1"># but it&#39;s overkill for just that one bit of state.</span>
 <span class="g g-Whitespace">    </span><span class="mi">186</span>     <span class="k">def</span> <span class="nf">magic_deco</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">187</span>         <span class="n">call</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">f</span><span class="p">,</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">188</span> 
 <span class="g g-Whitespace">    </span><span class="mi">189</span>         <span class="k">if</span> <span class="n">callable</span><span class="p">(</span><span class="n">arg</span><span class="p">):</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.9.4/x64/lib/python3.9/site-packages/IPython/core/magics/pylab.py</span> in <span class="ni">matplotlib</span><span class="nt">(self, line)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.9.5/x64/lib/python3.9/site-packages/IPython/core/magics/pylab.py</span> in <span class="ni">matplotlib</span><span class="nt">(self, line)</span>
 <span class="g g-Whitespace">     </span><span class="mi">97</span>             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Available matplotlib backends: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">backends_list</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">98</span>         <span class="k">else</span><span class="p">:</span>
 <span class="ne">---&gt; </span><span class="mi">99</span>             <span class="n">gui</span><span class="p">,</span> <span class="n">backend</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shell</span><span class="o">.</span><span class="n">enable_matplotlib</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">gui</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">gui</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">args</span><span class="o">.</span><span class="n">gui</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">100</span>             <span class="bp">self</span><span class="o">.</span><span class="n">_show_matplotlib_backend</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">gui</span><span class="p">,</span> <span class="n">backend</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">101</span> 
 
-<span class="nn">/opt/hostedtoolcache/Python/3.9.4/x64/lib/python3.9/site-packages/ipykernel/zmqshell.py</span> in <span class="ni">enable_matplotlib</span><span class="nt">(self, gui)</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.9.5/x64/lib/python3.9/site-packages/ipykernel/zmqshell.py</span> in <span class="ni">enable_matplotlib</span><span class="nt">(self, gui)</span>
 <span class="g g-Whitespace">    </span><span class="mi">599</span> 
 <span class="g g-Whitespace">    </span><span class="mi">600</span>     <span class="k">def</span> <span class="nf">enable_matplotlib</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">gui</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">601</span>         <span class="n">gui</span><span class="p">,</span> <span class="n">backend</span> <span class="o">=</span> <span class="nb">super</span><span class="p">(</span><span class="n">ZMQInteractiveShell</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">enable_matplotlib</span><span class="p">(</span><span class="n">gui</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">602</span> 
-<span class="g g-Whitespace">    </span><span class="mi">603</span>         <span class="kn">from</span> <span class="nn">ipykernel.pylab.backend_inline</span> <span class="kn">import</span> <span class="n">configure_inline_support</span>
+<span class="g g-Whitespace">    </span><span class="mi">603</span>         <span class="k">try</span><span class="p">:</span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.9.4/x64/lib/python3.9/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">enable_matplotlib</span><span class="nt">(self, gui)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3511</span>         <span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">3512</span><span class="sd">         from IPython.core import pylabtools as pt</span>
-<span class="ne">-&gt; </span><span class="mi">3513</span><span class="sd">         gui, backend = pt.find_gui_and_backend(gui, self.pylab_gui_select)</span>
-<span class="g g-Whitespace">   </span><span class="mi">3514</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">3515</span><span class="sd">         if gui != &#39;inline&#39;:</span>
+<span class="nn">/opt/hostedtoolcache/Python/3.9.5/x64/lib/python3.9/site-packages/IPython/core/interactiveshell.py</span> in <span class="ni">enable_matplotlib</span><span class="nt">(self, gui)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3515</span>         <span class="s2">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">3516</span><span class="s2">         from IPython.core import pylabtools as pt</span>
+<span class="ne">-&gt; </span><span class="mi">3517</span><span class="s2">         from matplotlib_inline.backend_inline import configure_inline_support</span>
+<span class="g g-Whitespace">   </span><span class="mi">3518</span><span class="s2">         gui, backend = pt.find_gui_and_backend(gui, self.pylab_gui_select)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3519</span><span class="s2"> </span>
 
-<span class="nn">/opt/hostedtoolcache/Python/3.9.4/x64/lib/python3.9/site-packages/IPython/core/pylabtools.py</span> in <span class="ni">find_gui_and_backend</span><span class="nt">(gui, gui_select)</span>
-<span class="g g-Whitespace">    </span><span class="mi">278</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">279</span> 
-<span class="ne">--&gt; </span><span class="mi">280</span>     <span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="g g-Whitespace">    </span><span class="mi">281</span> 
-<span class="g g-Whitespace">    </span><span class="mi">282</span>     <span class="k">if</span> <span class="n">gui</span> <span class="ow">and</span> <span class="n">gui</span> <span class="o">!=</span> <span class="s1">&#39;auto&#39;</span><span class="p">:</span>
+<span class="s2">/opt/hostedtoolcache/Python/3.9.5/x64/lib/python3.9/site-packages/matplotlib_inline/backend_inline.py in &lt;module&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span><span class="s2"> # Distributed under the terms of the BSD 3-Clause License.</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span><span class="s2"> </span>
+<span class="ne">----&gt; </span><span class="mi">6</span><span class="s2"> import matplotlib</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span><span class="s2"> from matplotlib.backends.backend_agg import (  # noqa</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span><span class="s2">     new_figure_manager,</span>
 
 <span class="ne">ModuleNotFoundError</span>: No module named &#39;matplotlib&#39;
 </pre></div>
@@ -721,11 +719,9 @@ memory usage: 759.2+ KB
 
       </div>
     </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
 
-    
-  <script src="_static/js/index.d3f166471bb80abb5163.js"></script>
-
-
-    
+  
   </body>
 </html>
